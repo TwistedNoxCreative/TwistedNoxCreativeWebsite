@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08090d" />
+  <meta name="description" content="Explore TwistedNox Creative stream branding packages, Basic/Pro/Ultimate tiers, the Echo Six Tactical Collection, WebM motion graphics, and OBS technical consulting." />
+  <meta name="author" content="TwistedNox Creative" />
+  <meta property="og:title" content="Services & Products — TwistedNox Creative" />
+  <meta property="og:description" content="Complete branding systems engineered for live broadcasts. Premade stream packages ($20–$40), Pro customized systems ($75–$200), and Ultimate bespoke creator universes ($250+)." />
+  <meta property="og:type" content="website" />
+  <title>Services &amp; Products — TwistedNox Creative | Complete Branding Systems</title>
+
+  <style>
+    :root {
+      --bg: #08090d;
+      --bg-2: #0d1018;
+      --panel: rgba(17,20,30,.76);
+      --panel-strong: #11141e;
+      --line: rgba(255,255,255,.095);
+      --line-strong: rgba(255,255,255,.15);
+      --text: #f4f7fb;
+      --muted: #9ba4b3;
+      --muted-2: #717b8a;
+      --accent: #b9ff35;
+      --accent-2: #5de8ff;
+      --hot: #ff4dd8;
+      --gold: #f59e0b;
+      --shadow: 0 25px 70px rgba(0,0,0,.46);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(93,232,255,.08), transparent 28%),
+        radial-gradient(circle at 88% 8%, rgba(255,77,216,.08), transparent 22%),
+        linear-gradient(180deg, #090a0f 0%, #07080b 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      opacity: .35;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.95), transparent 75%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 55vw;
+      height: 55vw;
+      left: -25vw;
+      bottom: -20vw;
+      background: radial-gradient(circle, rgba(185,255,53,.055), transparent 62%);
+      filter: blur(24px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .announcement {
+      min-height: 34px;
+      display: grid;
+      place-items: center;
+      padding: 8px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(185,255,53,.08), rgba(93,232,255,.04), rgba(255,77,216,.06));
+      color: #d9e2ee;
+      font-size: 12px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(8,9,13,.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 950;
+      letter-spacing: .07em;
+      font-size: 17px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(185,255,53,.95), rgba(93,232,255,.82));
+      color: #050609;
+      font-weight: 1000;
+      box-shadow: 0 0 34px rgba(185,255,53,.18);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 2px;
+      background: rgba(255,255,255,.8);
+      transform: rotate(-25deg);
+      right: -14%;
+      top: 40%;
+      box-shadow: 0 7px 0 rgba(255,255,255,.55);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      padding: 11px 15px;
+      border-radius: 10px;
+      color: #c8d0dc;
+      font-size: 14px;
+      font-weight: 750;
+      transition: .2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(255,255,255,.06); }
+
+    .nav-cta {
+      padding: 12px 17px !important;
+      color: #07090b !important;
+      background: var(--accent) !important;
+      box-shadow: 0 10px 35px rgba(185,255,53,.12);
+    }
+    .nav-cta:hover { background: #ceff72 !important; }
+
+    .menu {
+      display: none;
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+    }
+
+    .hero { padding: 56px 0 36px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #cbd4df;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 900;
+      background: rgba(255,255,255,.025);
+    }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+
+    h1 {
+      font-size: clamp(40px, 5.2vw, 74px);
+      line-height: .95;
+      letter-spacing: -.055em;
+      margin: 20px 0 18px;
+      max-width: 920px;
+    }
+    .accent-word { color: var(--accent); text-shadow: 0 0 34px rgba(185,255,53,.12); }
+
+    .hero-copy {
+      max-width: 760px;
+      color: #adb6c3;
+      font-size: 17px;
+      line-height: 1.68;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 13px;
+      border: 1px solid transparent;
+      font-weight: 900;
+      letter-spacing: .01em;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #050709; background: var(--accent); box-shadow: 0 15px 34px rgba(185,255,53,.13); }
+    .btn-secondary { color: var(--text); background: rgba(255,255,255,.035); border-color: var(--line-strong); }
+
+    section { padding: 68px 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .section-kicker { color: var(--accent-2); text-transform: uppercase; letter-spacing: .15em; font-size: 11px; font-weight: 900; }
+    .section-title { margin: 6px 0 0; font-size: clamp(28px, 3.8vw, 46px); letter-spacing: -.045em; line-height: 1.04; }
+    .section-copy { max-width: 560px; color: var(--muted); line-height: 1.65; font-size: 14px; }
+
+    /* 3-Tier Service Pricing Grid */
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .tier-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+      position: relative;
+      transition: .22s ease;
+    }
+    .tier-card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+    .tier-card.featured-tier {
+      border-color: rgba(185,255,53,.4);
+      background: linear-gradient(165deg, rgba(185,255,53,.075), rgba(93,232,255,.04) 45%, rgba(17,20,30,.92));
+      box-shadow: 0 24px 60px rgba(0,0,0,.42);
+    }
+    .tier-badge {
+      display: inline-block;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.06);
+      color: #c7d1de;
+      margin-bottom: 14px;
+    }
+    .tier-card.featured-tier .tier-badge {
+      background: var(--accent);
+      color: #050709;
+    }
+    .tier-name { font-size: 13px; font-weight: 900; color: var(--accent-2); text-transform: uppercase; letter-spacing: .12em; }
+    .tier-catchy { margin: 6px 0 12px; font-size: 23px; letter-spacing: -.03em; line-height: 1.15; }
+    .tier-price {
+      font-size: 38px;
+      font-weight: 950;
+      letter-spacing: -.04em;
+      margin: 4px 0 14px;
+    }
+    .tier-price span { font-size: 12px; font-weight: 700; color: var(--muted); display: block; margin-top: 2px; letter-spacing: 0; }
+    .tier-desc { color: #9da7b6; font-size: 13.5px; line-height: 1.62; margin: 0 0 20px; }
+    .tier-list-title { font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; color: #cfd7e3; margin-bottom: 10px; }
+    .tier-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 26px;
+      display: grid;
+      gap: 9px;
+      font-size: 13px;
+      color: #b4becc;
+    }
+    .tier-list li {
+      display: flex;
+      gap: 9px;
+      line-height: 1.45;
+    }
+    .tier-list li::before {
+      content: "✦";
+      color: var(--accent);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    /* Spotlight Product & Service Breakdown */
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .spotlight-card {
+      padding: 32px;
+      border-radius: 24px;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(145deg, rgba(18,20,28,.92), rgba(10,12,18,.95));
+      position: relative;
+      overflow: hidden;
+    }
+    .spotlight-card.echo {
+      border-color: rgba(93,232,255,.32);
+      background:
+        radial-gradient(circle at 85% 15%, rgba(93,232,255,.15), transparent 38%),
+        radial-gradient(circle at 15% 85%, rgba(243,149,221,.12), transparent 38%),
+        linear-gradient(145deg, #121417, #07080A);
+    }
+    .spotlight-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+    .meta-pill {
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.035);
+      font-size: 11px;
+      font-weight: 800;
+      color: #cfd8e4;
+    }
+    .spotlight-card h3 { margin: 8px 0 10px; font-size: 26px; letter-spacing: -.03em; }
+    .spotlight-card p { color: #a7b1c0; font-size: 14.5px; line-height: 1.68; margin: 0 0 16px; }
+
+    /* Product Catalog Cards */
+    .featured {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .product {
+      min-width:0;
+      overflow:hidden;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.016));
+      transition:.2s ease;
+    }
+    .product:hover { transform:translateY(-4px); border-color:var(--line-strong); box-shadow: 0 20px 50px rgba(0,0,0,.24); }
+    .product-preview {
+      aspect-ratio: 16/10;
+      position:relative;
+      overflow:hidden;
+      background: #0c0e14;
+      border-bottom:1px solid var(--line);
+    }
+    .product-preview.p1 { background: radial-gradient(circle at 68% 35%, rgba(93,232,255,.23), transparent 17%), linear-gradient(145deg,#141720,#0a0b10 66%,#1c1e25); }
+    .product-preview.p2 { background: radial-gradient(circle at 65% 30%, rgba(255,77,216,.19), transparent 18%), linear-gradient(145deg,#1a121a,#090a0f 60%,#131822); }
+    .product-preview.p3 { background: radial-gradient(circle at 40% 45%, rgba(185,255,53,.16), transparent 17%), linear-gradient(145deg,#151710,#0a0b0d 62%,#15191a); }
+    .preview-tag { position:absolute; top:13px; left:13px; padding:7px 9px; border-radius:999px; background:rgba(8,9,13,.75); border:1px solid rgba(255,255,255,.1); color:#c7d0db; font-size:9px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+    .preview-lines { position:absolute; inset:24% 10% 15%; display:grid; gap:10px; }
+    .preview-lines span { height:9px; border-radius:2px; background:linear-gradient(90deg, rgba(255,255,255,.2), rgba(255,255,255,.03)); }
+    .preview-lines span:nth-child(2) { width:70%; }
+    .preview-lines span:nth-child(3) { width:82%; }
+    .preview-lower { position:absolute; left:9%; right:9%; bottom:10%; height:18%; display:flex; gap:8px; }
+    .preview-lower span { flex:1; border:1px solid rgba(255,255,255,.09); background:rgba(7,8,12,.52); border-radius:6px; }
+    .product-body { padding: 18px; }
+    .product-body h3 { margin:0 0 6px; font-size:20px; letter-spacing:-.025em; }
+    .product-body p { margin:0 0 14px; color:#8994a2; font-size:12.5px; line-height:1.58; min-height:42px; }
+    .product-foot { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .price { font-weight:950; font-size:17px; }
+    .price small { display:block; color:#6d7784; font-size:10px; font-weight:700; margin-top:2px; }
+    .mini-btn { padding:9px 11px; border-radius:9px; border:1px solid var(--line-strong); background:rgba(255,255,255,.035); font-size:11px; font-weight:900; }
+
+    /* 5 Creative Capabilities */
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .cap-card {
+      padding: 20px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.022);
+    }
+    .cap-icon { color: var(--accent-2); font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .cap-card h3 { margin: 10px 0 8px; font-size: 16px; }
+    .cap-card p { margin: 0; color: #8c97a6; font-size: 12.5px; line-height: 1.55; }
+
+    .manifesto {
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(185,255,53,.16);
+      border-radius: 28px;
+      padding: 48px;
+      background: linear-gradient(135deg, rgba(185,255,53,.065), rgba(93,232,255,.045) 38%, rgba(255,255,255,.018));
+    }
+    .manifesto h2 { position:relative; margin:0 0 10px; max-width:780px; font-size:clamp(30px,4.5vw,54px); letter-spacing:-.05em; line-height:.98; }
+    .manifesto p { position:relative; max-width:690px; margin:0 0 24px; color:#9ba6b2; line-height:1.65; font-size:14.5px; }
+
+    footer { padding:36px 0 52px; border-top:1px solid var(--line); }
+    .footer-grid { display:grid; grid-template-columns: 1.6fr 1fr 1fr; gap:28px; }
+    .footer-brand { max-width:440px; }
+    .footer-brand p { color:#7f8b99; font-size:12px; line-height:1.65; margin:14px 0 0; }
+    .footer-col h4 { margin:0 0 10px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#aeb8c5; }
+    .footer-col a { display:block; padding:5px 0; color:#7f8b99; font-size:12px; }
+    .footer-col a:hover { color:#eaf0f5; }
+    .copyright { margin-top:38px; color:#58616c; font-size:11px; display:flex; justify-content:space-between; gap:20px; }
+
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity:1; transform:none; }
+
+    @media (max-width: 1020px) {
+      .tiers-grid, .spotlight-grid, .featured { grid-template-columns: 1fr; }
+      .cap-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display:none; position:absolute; top:78px; left:20px; right:20px; padding:10px; border:1px solid var(--line-strong); border-radius:14px; background:rgba(10,11,16,.97); flex-direction:column; align-items:stretch; box-shadow:var(--shadow); }
+      .nav-links.open { display:flex; }
+      .menu { display:block; }
+    }
+
+    @media (max-width: 680px) {
+      .container { width:min(var(--max), calc(100% - 28px)); }
+      .nav { height:68px; }
+      .nav-links { top:68px; left:14px; right:14px; }
+      .cap-grid { grid-template-columns: 1fr; }
+      .manifesto, .spotlight-card { padding: 26px 20px; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .footer-brand { grid-column:1/-1; }
+      .copyright { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Premium streamer packages • OBS + Streamlabs ready • Built to be remembered</div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="TwistedNox Creative home">
+        <span class="brand-mark">TN</span>
+        <span>TwistedNox Creative</span>
+      </a>
+
+      <button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="services.html">Services &amp; Products</a>
+        <a href="index.html#setup">Setup &amp; FAQ</a>
+        <a href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="#tiers">Choose Package</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="hero">
+      <div class="container reveal">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> Services &amp; Stream Production Packages</span>
+        <h1>COMPLETE BRANDING SYSTEMS <span class="accent-word">ENGINEERED FOR LIVE BROADCASTS.</span></h1>
+        <p class="hero-copy">
+          A great broadcaster shouldn't be held back by generic $15 templates or bogged down by unoptimized graphics that stutter mid-game. At TwistedNox Creative, we build unified thematic systems—spanning tactical military, cyberpunk glitch, dark gothic, fantasy RPG, and clean minimal esports—that are rigorously tested in OBS Studio and Streamlabs so you capture viewers in the first five seconds and keep them for the long haul.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#tiers">Compare Pricing Tiers</a>
+          <a class="btn btn-secondary" href="#echo-six">Explore Echo Six Pack</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. COMPLETE 3-TIER SERVICES STRUCTURE -->
+    <section id="tiers" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Tiered Packages</div>
+            <h2 class="section-title">Built for every stage of the grind.</h2>
+          </div>
+          <p class="section-copy">From instant-download premade systems to 1-on-1 ground-up creator universes with full OBS technical consultation.</p>
+        </div>
+
+        <div class="tiers-grid">
+          <!-- TIER 1: BASIC -->
+          <article class="tier-card">
+            <div>
+              <span class="tier-badge">Instant Digital Download</span>
+              <div class="tier-name">01 / Basic Tier — Premade Packages</div>
+              <h3 class="tier-catchy">High-Impact Broadcast Polish, Ready Tonight</h3>
+              <div class="tier-price">$20–$40 <span>Ready-to-deploy digital bundle</span></div>
+              <p class="tier-desc">
+                Ditch the unfinished channel look immediately with our lore-driven premade systems, starting with the flagship <em>Echo Six</em> tactical collection. You get a cohesive, performance-optimized visual theme that commands attention right out of the box for a fraction of custom studio pricing.
+              </p>
+              <div class="tier-list-title">What’s Included:</div>
+              <ul class="tier-list">
+                <li>Full Stream Broadcast Assets (Starting Soon, Live, Intermission, BRB, Just Chatting, and Stream Ending scenes)</li>
+                <li>Matching webcam frame and animated subscriber/raid/donation alerts</li>
+                <li>Coordinated Twitch panels and profile headers</li>
+                <li>Step-by-step technical walkthrough for OBS Studio and Streamlabs integration</li>
+              </ul>
+            </div>
+            <a class="btn btn-secondary" href="#products">Shop Premade Packs →</a>
+          </article>
+
+          <!-- TIER 2: PRO (FEATURED) -->
+          <article class="tier-card featured-tier">
+            <div>
+              <span class="tier-badge">Most Popular • Semi-Custom</span>
+              <div class="tier-name">02 / Pro Tier — Customized Brand Systems</div>
+              <h3 class="tier-catchy">Shatter the Template Mold Across Every Platform</h3>
+              <div class="tier-price">$75–$200 <span>Estimated turnaround: 1–2 weeks</span></div>
+              <p class="tier-desc">
+                Designed for growing creators ready to lock in a recognizable identity across their stream, Discord, and social media footprint. We customize your typography, color palette, and motion assets so your channel feels unmistakably yours the second a new viewer clicks in.
+              </p>
+              <div class="tier-list-title">What’s Included:</div>
+              <ul class="tier-list">
+                <li>Bespoke TN-style monogram or esports emblem and official brand guidelines</li>
+                <li>Custom-tailored Broadcast Scene Package and alpha-channel transparency overlays</li>
+                <li>Custom animated stinger transition (WebM with alpha audio)</li>
+                <li>Full Community &amp; Social Kit (YouTube banner, X/Kick headers, Discord server banners, and role icons)</li>
+              </ul>
+            </div>
+            <a class="btn btn-primary" href="mailto:hello@twistednoxcreative.com?subject=Pro%20Tier%20Custom%20Stream%20System">Book Pro Tier Build →</a>
+          </article>
+
+          <!-- TIER 3: ULTIMATE -->
+          <article class="tier-card">
+            <div>
+              <span class="tier-badge">1-on-1 Bespoke Studio Build</span>
+              <div class="tier-name">03 / Ultimate Tier — Bespoke Creator Universe</div>
+              <h3 class="tier-catchy">Agency-Grade Creative Direction Meets Tech Mastery</h3>
+              <div class="tier-price">$250+ <span>Custom timeline &amp; 1-on-1 consult</span></div>
+              <p class="tier-desc">
+                The complete visual and technical transformation for ambitious streamers and established partners who want an unforgettable creator universe. We build your brand from scratch—from custom motion FX to your own creator landing page—and personally help you dial in your scenes, audio filters, and bitrates.
+              </p>
+              <div class="tier-list-title">What’s Included:</div>
+              <ul class="tier-list">
+                <li>Complete ground-up Visual Identity (horizontal, square, and icon logo variants + typography and color system)</li>
+                <li>Bespoke Motion Graphics &amp; FX (animated video intro, custom WebM stinger transitions, and reactive alert suite)</li>
+                <li>Custom channel emotes, sub badges, and full Discord community visual architecture</li>
+                <li>Custom Creator Landing Page / Portfolio Hub + 1-on-1 OBS/Streamlabs technical consultation</li>
+              </ul>
+            </div>
+            <a class="btn btn-secondary" href="mailto:hello@twistednoxcreative.com?subject=Ultimate%20Tier%20Bespoke%20Project">Request Custom Consult →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SPOTLIGHT: PRODUCT & SERVICE DEEP DIVE -->
+    <section id="echo-six" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Flagship Product &amp; Service Spotlight</div>
+            <h2 class="section-title">Engineered to command your broadcast.</h2>
+          </div>
+          <p class="section-copy">Detailed specifications for our flagship premade tactical collection and our most popular customized service package.</p>
+        </div>
+
+        <div class="spotlight-grid">
+          <!-- PRODUCT DESCRIPTION: ECHO SIX -->
+          <div class="spotlight-card echo">
+            <div class="section-kicker">Featured Product • Basic Premade Tier</div>
+            <h3>“Echo Six” Tactical Stream Package</h3>
+            <div class="spotlight-meta">
+              <span class="meta-pill">💰 $20–$40</span>
+              <span class="meta-pill">⚡ Instant Download</span>
+              <span class="meta-pill">🎯 FPS &amp; Competitive Gamers</span>
+              <span class="meta-pill">🎬 6 Tactical Operators</span>
+            </div>
+            <p>
+              Deploy an instant esports presence on your channel tonight with the <strong>Echo Six Tactical Stream Package</strong>—giving you the impact of a bespoke studio broadcast without the agency price tag.
+            </p>
+            <p>
+              Engineered on a signature deep-black (<code>#07080A</code>) and gunmetal (<code>#121417</code>) canvas with razor-sharp electric cyan (<code>#8BF0F9</code>) and bright magenta (<code>#F395DD</code>) accents, every scene and WebM alpha-channel stinger transition is pre-tested for OBS Studio and Streamlabs so your stream looks cinematic without dropping a single frame. Grab the complete bundle for $20–$40, follow our included quick-start technical walkthrough, and go live looking like a pro in minutes.
+            </p>
+            <div class="hero-actions" style="margin-top:20px;">
+              <a class="btn btn-primary" href="mailto:hello@twistednoxcreative.com?subject=Order%20Echo%20Six%20Tactical%20Package">Get Echo Six Package</a>
+              <a class="btn btn-secondary" href="index.html#setup">See OBS Setup Process</a>
+            </div>
+          </div>
+
+          <!-- SERVICE DESCRIPTION: PRO TIER -->
+          <div class="spotlight-card">
+            <div class="section-kicker">Featured Service • Pro Customization</div>
+            <h3>Pro Tier – Customized Thematic Stream System</h3>
+            <div class="spotlight-meta">
+              <span class="meta-pill">💰 $75–$200</span>
+              <span class="meta-pill">⏱️ 1–2 Weeks</span>
+              <span class="meta-pill">🎨 5 Core Style Lanes</span>
+              <span class="meta-pill">🛠️ OBS + Discord Ready</span>
+            </div>
+            <p>
+              Stop losing new viewers in the first five seconds to mismatched graphics and overused templates. Our <strong>Pro Tier</strong> transforms your channel into a cohesive thematic experience—whether your vibe is tactical military, dark gothic, cyberpunk glitch, fantasy RPG, or clean minimal esports—while keeping your webcam and gameplay as the undisputed focal point.
+            </p>
+            <p>
+              For $75–$200, you can expect a complete, stream-tested package of custom scenes (Starting Soon, BRB, Intermission, Just Chatting, Ending), alerts, and social/Discord headers delivered in 1–2 weeks, complete with technical setup guidance for a smooth, zero-frame-drop broadcast.
+            </p>
+            <div class="hero-actions" style="margin-top:20px;">
+              <a class="btn btn-primary" href="mailto:hello@twistednoxcreative.com?subject=Pro%20Tier%20Custom%20Consultation">Start Pro Customization</a>
+              <a class="btn btn-secondary" href="about.html">Why Creators Choose Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PREMADE STORE CATALOG -->
+    <section id="products" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Premade Collection Catalog</div>
+            <h2 class="section-title">Ready-to-deploy stream systems.</h2>
+          </div>
+          <p class="section-copy">Every premade package includes OBS/Streamlabs scene collections, WebM transitions, alerts, panels, and a setup walkthrough.</p>
+        </div>
+
+        <div class="featured">
+          <article class="product">
+            <div class="product-preview p1">
+              <span class="preview-tag">Flagship / Tactical</span>
+              <div class="preview-lines"><span></span><span></span><span></span></div>
+              <div class="preview-lower"><span></span><span></span><span></span></div>
+            </div>
+            <div class="product-body">
+              <h3>Echo Six — Tactical Collection</h3>
+              <p>Six-operator military/esports system with gunmetal HUD overlays, cyan/magenta neon accents, and WebM alpha transitions.</p>
+              <div class="product-foot">
+                <div class="price">$20–$40 <small>Basic Premade Tier</small></div>
+                <a class="mini-btn" href="mailto:hello@twistednoxcreative.com?subject=Echo%20Six%20Package">Order now →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-preview p2">
+              <span class="preview-tag">Coming Next / Horror &amp; Dark</span>
+              <div class="preview-lines"><span></span><span></span><span></span></div>
+              <div class="preview-lower"><span></span><span></span><span></span></div>
+            </div>
+            <div class="product-body">
+              <h3>Afterdark — Gothic &amp; Horror System</h3>
+              <p>High-contrast dark mode streaming package focused on tension, eerie distortion, and unforgettable alert moments.</p>
+              <div class="product-foot">
+                <div class="price">$20–$40 <small>Coming soon</small></div>
+                <a class="mini-btn" href="mailto:hello@twistednoxcreative.com?subject=Afterdark%20Waitlist">Join waitlist →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-preview p3">
+              <span class="preview-tag">Coming Next / Variety &amp; Glitch</span>
+              <div class="preview-lines"><span></span><span></span><span></span></div>
+              <div class="preview-lower"><span></span><span></span><span></span></div>
+            </div>
+            <div class="product-body">
+              <h3>Neon Shift — Variety Creator System</h3>
+              <p>Kinetic angular fractures and controlled glitch energy built for mixed-content creators and competitive variety channels.</p>
+              <div class="product-foot">
+                <div class="price">$20–$40 <small>Coming soon</small></div>
+                <a class="mini-btn" href="mailto:hello@twistednoxcreative.com?subject=Neon%20Shift%20Waitlist">Join waitlist →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CORE CREATIVE CAPABILITIES -->
+    <section class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Full-Spectrum Studio</div>
+            <h2 class="section-title">Services &amp; creative capabilities.</h2>
+          </div>
+          <p class="section-copy">Need a specific upgrade or a complete top-to-bottom channel overhaul? Here is everything we engineer in-house.</p>
+        </div>
+
+        <div class="cap-grid">
+          <div class="cap-card">
+            <div class="cap-icon">01 / IDENTITY</div>
+            <h3>Visual Identity</h3>
+            <p>Bespoke TN-style monograms, esports emblems, typography pairings, and official brand guidelines.</p>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">02 / BROADCAST</div>
+            <h3>Stream Broadcast Assets</h3>
+            <p>Starting Soon, Be Right Back (BRB), Intermission, Just Chatting, Live Gameplay, and Stream Ending scenes.</p>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">03 / MOTION FX</div>
+            <h3>Motion Graphics &amp; FX</h3>
+            <p>Custom animated stinger transitions (WebM with alpha audio), animated subscriber/raid/donation alerts, and video intros.</p>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">04 / COMMUNITY</div>
+            <h3>Community &amp; Social Kits</h3>
+            <p>Twitch panels, custom sub badges, Discord server banners/role icons, YouTube banners, and X/Kick headers.</p>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">05 / WEB &amp; TECH</div>
+            <h3>Web &amp; Technical Services</h3>
+            <p>Creator landing pages, portfolio hubs, and 1-on-1 OBS/Streamlabs technical consultation (audio filters &amp; bitrates).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. BOTTOM CALL TO ACTION -->
+    <section class="reveal">
+      <div class="container">
+        <div class="manifesto">
+          <div class="section-kicker">Tired of .zip files with zero instructions?</div>
+          <h2>DON’T JUST STREAM. BE REMEMBERED.</h2>
+          <p>Not sure whether you need a Basic premade bundle, a Pro customization, or a full Ultimate creator universe? Reach out today to discuss your stream theme, color ideas, and vision, and let’s turn your channel into a recognized brand.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:hello@twistednoxcreative.com?subject=TwistedNox%20Creative%20Brand%20Consultation">Request a Free Brand Consult</a>
+            <a class="btn btn-secondary" href="about.html">Read Our Story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html"><span class="brand-mark">TN</span><span>TwistedNox Creative</span></a>
+          <p>Premium streamer packages and creator branding for people building channels worth remembering.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Store</h4>
+          <a href="services.html">Services &amp; Packages</a>
+          <a href="services.html#products">Premade Store</a>
+          <a href="index.html#setup">Setup &amp; FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About TwistedNox Creative</a>
+          <a href="services.html#tiers">Custom Commissions</a>
+          <a href="mailto:hello@twistednoxcreative.com">Contact &amp; Support</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© <span id="year"></span> TwistedNox Creative. All rights reserved.</span>
+        <span>Don't just stream. Be remembered.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    navLinks?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn?.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

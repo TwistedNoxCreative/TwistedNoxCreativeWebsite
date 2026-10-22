@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08090d" />
+  <meta name="description" content="Learn the story behind TwistedNox Creative and founder Raymond McCoy. Where streamer identity meets high-impact cinematic design and real OBS technical mastery." />
+  <meta name="author" content="TwistedNox Creative" />
+  <meta property="og:title" content="About TwistedNox Creative — Don't Just Stream. Be Remembered." />
+  <meta property="og:description" content="Founded by Raymond McCoy in Tennessee, TwistedNox Creative builds bespoke visual identities and stream-tested production packages at creator-first prices." />
+  <meta property="og:type" content="website" />
+  <title>About — TwistedNox Creative | Don't Just Stream. Be Remembered.</title>
+  <link rel="icon" type="image/png" href="assets/twistednox-emblem-icon.png" />
+  <link rel="apple-touch-icon" href="assets/twistednox-emblem-256.png" />
+
+  <style>
+    :root {
+      --bg: #08090d;
+      --bg-2: #0d1018;
+      --panel: rgba(17,20,30,.76);
+      --panel-strong: #11141e;
+      --line: rgba(255,255,255,.095);
+      --line-strong: rgba(255,255,255,.15);
+      --text: #f4f7fb;
+      --muted: #9ba4b3;
+      --muted-2: #717b8a;
+      --accent: #b9ff35;
+      --accent-2: #5de8ff;
+      --hot: #ff4dd8;
+      --danger: #ff4e5b;
+      --shadow: 0 25px 70px rgba(0,0,0,.46);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(93,232,255,.08), transparent 28%),
+        radial-gradient(circle at 88% 8%, rgba(255,77,216,.08), transparent 22%),
+        linear-gradient(180deg, #090a0f 0%, #07080b 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      opacity: .35;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.95), transparent 75%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 55vw;
+      height: 55vw;
+      left: -25vw;
+      bottom: -20vw;
+      background: radial-gradient(circle, rgba(185,255,53,.055), transparent 62%);
+      filter: blur(24px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .announcement {
+      min-height: 34px;
+      display: grid;
+      place-items: center;
+      padding: 8px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(185,255,53,.08), rgba(93,232,255,.04), rgba(255,77,216,.06));
+      color: #d9e2ee;
+      font-size: 12px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(8,9,13,.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 950;
+      letter-spacing: .07em;
+      font-size: 17px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(185,255,53,.95), rgba(93,232,255,.82));
+      color: #050609;
+      font-weight: 1000;
+      box-shadow: 0 0 34px rgba(185,255,53,.18);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 2px;
+      background: rgba(255,255,255,.8);
+      transform: rotate(-25deg);
+      right: -14%;
+      top: 40%;
+      box-shadow: 0 7px 0 rgba(255,255,255,.55);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      padding: 11px 15px;
+      border-radius: 10px;
+      color: #c8d0dc;
+      font-size: 14px;
+      font-weight: 750;
+      transition: .2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(255,255,255,.06); }
+
+    .nav-cta {
+      padding: 12px 17px !important;
+      color: #07090b !important;
+      background: var(--accent) !important;
+      box-shadow: 0 10px 35px rgba(185,255,53,.12);
+    }
+    .nav-cta:hover { background: #ceff72 !important; }
+
+    .menu {
+      display: none;
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+    }
+
+    .hero { padding: 56px 0 38px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #cbd4df;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 900;
+      background: rgba(255,255,255,.025);
+    }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+
+    h1 {
+      font-size: clamp(42px, 5.5vw, 78px);
+      line-height: .94;
+      letter-spacing: -.055em;
+      margin: 20px 0 14px;
+      max-width: 900px;
+    }
+    .sub-headline {
+      font-size: clamp(19px, 2.3vw, 26px);
+      font-weight: 800;
+      color: var(--accent-2);
+      margin: 0 0 18px;
+      letter-spacing: -.02em;
+    }
+    .accent-word { color: var(--accent); text-shadow: 0 0 34px rgba(185,255,53,.12); }
+
+    .hero-copy {
+      max-width: 740px;
+      color: #adb6c3;
+      font-size: 17px;
+      line-height: 1.68;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 13px;
+      border: 1px solid transparent;
+      font-weight: 900;
+      letter-spacing: .01em;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #050709; background: var(--accent); box-shadow: 0 15px 34px rgba(185,255,53,.13); }
+    .btn-secondary { color: var(--text); background: rgba(255,255,255,.035); border-color: var(--line-strong); }
+
+    section { padding: 68px 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .section-kicker { color: var(--accent-2); text-transform: uppercase; letter-spacing: .15em; font-size: 11px; font-weight: 900; }
+    .section-title { margin: 6px 0 0; font-size: clamp(28px, 3.8vw, 46px); letter-spacing: -.045em; line-height: 1.04; }
+    .section-copy { max-width: 560px; color: var(--muted); line-height: 1.65; font-size: 14px; }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .story-card {
+      padding: 32px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+    }
+    .story-card p {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 15px;
+      margin: 0 0 18px;
+    }
+    .story-card p:last-child { margin-bottom: 0; }
+    .story-card strong { color: var(--text); }
+
+    .etymology-stack {
+      display: grid;
+      gap: 16px;
+    }
+    .etym-box {
+      padding: 26px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      position: relative;
+      overflow: hidden;
+    }
+    .etym-box.nox { border-left: 3px solid var(--accent-2); }
+    .etym-box.twisted { border-left: 3px solid var(--hot); }
+    .etym-tag {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .etym-box h3 {
+      margin: 6px 0 8px;
+      font-size: 24px;
+      letter-spacing: -.03em;
+    }
+    .etym-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .problem-card {
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.022);
+    }
+    .problem-card.solution {
+      border-color: rgba(185,255,53,.35);
+      background: linear-gradient(160deg, rgba(185,255,53,.08), rgba(93,232,255,.04), rgba(17,20,30,.9));
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    .problem-label {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+    }
+    .problem-card.solution .problem-label {
+      background: rgba(185,255,53,.16);
+      color: var(--accent);
+    }
+    .problem-card h3 { margin: 0 0 10px; font-size: 22px; }
+    .problem-card p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.62; }
+
+    .founder-wrap {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 32px;
+      align-items: center;
+      padding: 36px;
+      border-radius: 26px;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.012));
+    }
+    .founder-badge-card {
+      padding: 28px;
+      border-radius: 18px;
+      border: 1px solid rgba(93,232,255,.22);
+      background: radial-gradient(circle at 80% 20%, rgba(93,232,255,.14), transparent 45%), var(--bg-2);
+    }
+    .founder-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 950;
+      font-size: 22px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #050609;
+      margin-bottom: 16px;
+    }
+    .founder-badge-card h3 { margin: 0 0 4px; font-size: 24px; }
+    .founder-role { color: var(--accent-2); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; }
+    .founder-meta {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 9px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .founder-meta li {
+      padding: 8px 11px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .founder-quote {
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      line-height: 1.25;
+      color: var(--text);
+      margin: 0 0 16px;
+      padding-left: 16px;
+      border-left: 3px solid var(--accent);
+    }
+    .founder-bio p {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.7;
+      margin: 0 0 14px;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .pillar {
+      padding: 26px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+    }
+    .pillar-num {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .pillar h3 { margin: 8px 0 8px; font-size: 19px; }
+    .pillar p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.62; }
+
+    /* Synchronized Homepage Color Palette Swatches */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .swatch {
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.025);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .swatch-chip {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.18);
+      flex-shrink: 0;
+    }
+    .swatch-info strong { display: block; font-size: 13px; }
+    .swatch-info span { color: var(--muted); font-size: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    .manifesto {
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(185,255,53,.16);
+      border-radius: 28px;
+      padding: 48px;
+      background: linear-gradient(135deg, rgba(185,255,53,.065), rgba(93,232,255,.045) 38%, rgba(255,255,255,.018));
+    }
+    .manifesto h2 { position:relative; margin:0 0 10px; max-width:760px; font-size:clamp(30px,4.5vw,54px); letter-spacing:-.05em; line-height:.98; }
+    .manifesto p { position:relative; max-width:690px; margin:0 0 24px; color:#9ba6b2; line-height:1.65; font-size:14.5px; }
+
+    footer { padding:36px 0 52px; border-top:1px solid var(--line); }
+    .footer-grid { display:grid; grid-template-columns: 1.6fr 1fr 1fr; gap:28px; }
+    .footer-brand { max-width:440px; }
+    .footer-brand p { color:#7f8b99; font-size:12px; line-height:1.65; margin:14px 0 0; }
+    .footer-col h4 { margin:0 0 10px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#aeb8c5; }
+    .footer-col a { display:block; padding:5px 0; color:#7f8b99; font-size:12px; }
+    .footer-col a:hover { color:#eaf0f5; }
+    .copyright { margin-top:38px; color:#58616c; font-size:11px; display:flex; justify-content:space-between; gap:20px; }
+
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity:1; transform:none; }
+
+    @media (max-width: 980px) {
+      .story-grid, .founder-wrap, .problem-grid, .pillars-grid { grid-template-columns: 1fr; }
+      .palette-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display:none; position:absolute; top:78px; left:20px; right:20px; padding:10px; border:1px solid var(--line-strong); border-radius:14px; background:rgba(10,11,16,.97); flex-direction:column; align-items:stretch; box-shadow:var(--shadow); }
+      .nav-links.open { display:flex; }
+      .menu { display:block; }
+    }
+
+    @media (max-width: 680px) {
+      .container { width:min(var(--max), calc(100% - 28px)); }
+      .nav { height:68px; }
+      .nav-links { top:68px; left:14px; right:14px; }
+      .palette-grid { grid-template-columns: 1fr; }
+      .founder-wrap, .manifesto { padding: 26px 20px; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .footer-brand { grid-column:1/-1; }
+      .copyright { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Premium streamer packages • OBS + Streamlabs ready • Built to be remembered</div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="TwistedNox Creative home">
+        <span class="brand-mark">TN</span>
+        <span>TwistedNox Creative</span>
+      </a>
+
+      <button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a class="active" href="about.html">About</a>
+        <a href="services.html">Services &amp; Products</a>
+        <a href="faq.html">Setup &amp; FAQ</a>
+        <a href="index.html#contact">Contact</a>
+        <a class="nav-cta" href="services.html">Shop Packages</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="hero">
+      <div class="container reveal">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> About TwistedNox Creative</span>
+        <h1>DON’T JUST STREAM.<br><span class="accent-word">BE REMEMBERED.</span></h1>
+        <p class="sub-headline">Where Streamer Identity Meets High-Impact Cinematic Design.</p>
+        <p class="hero-copy">
+          TwistedNox Creative crafts bespoke visual identities, stream production packages, and cohesive brand systems for streamers, gamers, and online creators. We turn blank channels into unforgettable creator universes.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="services.html">Explore Services</a>
+          <a class="btn btn-secondary" href="mailto:hello@twistednoxcreative.com">Start Your Project</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. COMPLETE STORY & ORIGIN MEANING -->
+    <section class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Our Origin Story</div>
+            <h2 class="section-title">Forged for the midnight broadcast grind.</h2>
+          </div>
+          <p class="section-copy">No generic corporate brochure—just an authentic creator studio built to make independent streamers look unmistakable.</p>
+        </div>
+
+        <div class="story-grid">
+          <div class="story-card">
+            <p>
+              Every day, thousands of talented creators go live, only to lose potential followers in the <strong>first five seconds</strong> because their channel looks generic or unfinished. For too long, growing streamers have faced an unfair choice: pay $500 to $2,000+ for a corporate design agency, or settle for a cheap $15 marketplace template that hundreds of other channels are already using.
+            </p>
+            <p>
+              <strong>TwistedNox Creative was started to bridge that gap completely</strong>—delivering bespoke, cinematic branding systems built specifically for streaming and gaming culture at creator-first prices.
+            </p>
+            <p>
+              What makes TwistedNox Creative different is that we understand both sides of the screen. We don’t just sell random, one-off graphics or dump a <code>.zip</code> file in your inbox and disappear. Every overlay, WebM stinger transition, and alert is engineered and tested for <strong>OBS Studio and Streamlabs</strong> with alpha-channel transparency and zero frame drops—backed by clear technical walkthroughs for your scene setup, audio filters, and bitrates.
+            </p>
+          </div>
+
+          <div class="etymology-stack">
+            <div class="etym-box nox">
+              <div class="etym-tag">01 / Etymology — Latin Origin</div>
+              <h3>NOX</h3>
+              <p>Drawn from the primordial Latin word for <em>night</em> and <em>darkness</em>. It embodies the midnight broadcast hours when creators go live, compete, and forge real connections with their communities.</p>
+            </div>
+            <div class="etym-box twisted">
+              <div class="etym-tag">02 / Etymology — Design Philosophy</div>
+              <h3>TWISTED</h3>
+              <p>The kinetic, rule-breaking energy of our designs—sharp angular fractures, controlled glitch aesthetics, and dynamic motion that shatters generic marketplace templates (and permanently retires cliché wolf mascot logos).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. THE PROBLEM WE SOLVE -->
+    <section class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">The 5-Second Rule</div>
+            <h2 class="section-title">The problem we solve.</h2>
+          </div>
+          <p class="section-copy">When a viewer clicks into a stream, they decide within 5 seconds whether your channel feels established and worth following.</p>
+        </div>
+
+        <div class="problem-grid">
+          <div class="problem-card">
+            <span class="problem-label">Option A / Corporate Agencies</span>
+            <h3>$500 to $2,000+ Markups</h3>
+            <p>Large design agencies charge massive retainers out of reach for emerging and mid-sized streamers—and often deliver static graphics that aren't optimized for live OBS scene switching.</p>
+          </div>
+
+          <div class="problem-card">
+            <span class="problem-label">Option B / Cheap Marketplaces</span>
+            <h3>Overused $15 Templates</h3>
+            <p>Budget marketplace bundles leave you looking identical to hundreds of other streamers, with disconnected assets, zero setup support, and generic mascot clichés.</p>
+          </div>
+
+          <div class="problem-card solution">
+            <span class="problem-label">The TwistedNox Creative Solution</span>
+            <h3>Bespoke Systems, Creator Prices</h3>
+            <p>Professional-grade, unified visual systems—from ready-to-deploy $20–$40 tactical packs like <em>Echo Six</em> to $75–$200 Pro customizations and $250+ ground-up universes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MEET THE FOUNDER: RAYMOND MCCOY -->
+    <section class="reveal">
+      <div class="container">
+        <div class="founder-wrap">
+          <div class="founder-badge-card">
+            <div class="founder-avatar">RM</div>
+            <h3>Raymond McCoy</h3>
+            <div class="founder-role">Founder, Designer &amp; Tech Specialist</div>
+            <ul class="founder-meta">
+              <li>📍 Based in Dickson / Burns, Tennessee</li>
+              <li>🎮 Active Streamer, Gamer &amp; Father of Three</li>
+              <li>⚙️ OBS Studio, Streamlabs &amp; Hardware Specialist</li>
+              <li>🎨 Bespoke Identity, WebM Motion &amp; Lore Systems</li>
+            </ul>
+          </div>
+
+          <div class="founder-bio">
+            <div class="section-kicker" style="margin-bottom:10px;">Meet the Founder</div>
+            <blockquote class="founder-quote">
+              “What makes TwistedNox Creative different is that I understand both sides of the screen.”
+            </blockquote>
+            <p>
+              TwistedNox Creative was founded by <strong>Raymond McCoy</strong>—a digital designer, technology specialist, stay-at-home father of three, and active streamer and gamer based in the Dickson/Burns, Tennessee area.
+            </p>
+            <p>
+              Having hands-on experience with OBS Studio, Streamlabs, live scene management, audio filtering, bitrates, and streaming hardware, Raymond doesn’t just design graphics that look good in a static portfolio. Every asset is engineered and tested to ensure it runs cleanly during a live broadcast, interacts seamlessly with alerts, and communicates who the creator is the moment a new viewer arrives.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. WHY CREATORS CHOOSE TWISTEDNOX CREATIVE -->
+    <section class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">The TwistedNox Creative Standard</div>
+            <h2 class="section-title">Why creators choose us.</h2>
+          </div>
+          <p class="section-copy">Every package is built around four non-negotiable standards so you can focus on your content and community.</p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar">
+            <div class="pillar-num">01 / UNIFIED WORLDS</div>
+            <h3>Complete Systems Over Disconnected Graphics</h3>
+            <p>We don't sell random one-off overlays. We build unified thematic experiences across your entire stream, Discord, and social footprint—spanning tactical military, dark gothic, cyberpunk glitch, fantasy RPG, or clean minimal esports.</p>
+          </div>
+
+          <div class="pillar">
+            <div class="pillar-num">02 / LIVE PERFORMANCE</div>
+            <h3>Stream-Tested &amp; Performance-Optimized</h3>
+            <p>Assets are engineered specifically for OBS Studio and Streamlabs. Expect zero frame drops, WebM alpha-channel transparency, and clean visual hierarchy so your webcam and gameplay remain the focal point.</p>
+          </div>
+
+          <div class="pillar">
+            <div class="pillar-num">03 / ACCESSIBLE TIERS</div>
+            <h3>Creator-First Affordability</h3>
+            <p>Agency-quality creative direction without predatory agency markups. Flexible Basic, Pro, and Ultimate packages tailored for emerging streamers through established partners.</p>
+          </div>
+
+          <div class="pillar">
+            <div class="pillar-num">04 / REAL SUPPORT</div>
+            <h3>Technical Setup Guidance</h3>
+            <p>We don't just dump a <code>.zip</code> file and disappear. We provide clear technical walkthroughs for scene setup, audio filters, bitrate optimization, and alert integrations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. BRAND COLOR PALETTE REFERENCE (MATCHING HOMEPAGE :ROOT) -->
+    <section class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Visual DNA</div>
+            <h2 class="section-title">Official brand color system.</h2>
+          </div>
+          <p class="section-copy">Synchronized across every page using our signature dark metallic canvas and high-voltage neon accents.</p>
+        </div>
+
+        <div class="palette-grid">
+          <div class="swatch">
+            <span class="swatch-chip" style="background:var(--bg);"></span>
+            <div class="swatch-info"><strong>Core Void</strong><span>#08090D • --bg</span></div>
+          </div>
+          <div class="swatch">
+            <span class="swatch-chip" style="background:var(--bg-2);"></span>
+            <div class="swatch-info"><strong>Gunmetal Base</strong><span>#0D1018 • --bg-2</span></div>
+          </div>
+          <div class="swatch">
+            <span class="swatch-chip" style="background:var(--panel-strong);"></span>
+            <div class="swatch-info"><strong>Tactical Panel</strong><span>#11141E • --panel-strong</span></div>
+          </div>
+          <div class="swatch">
+            <span class="swatch-chip" style="background:var(--text);"></span>
+            <div class="swatch-info"><strong>Metallic White</strong><span>#F4F7FB • --text</span></div>
+          </div>
+          <div class="swatch">
+            <span class="swatch-chip" style="background:var(--muted);"></span>
+            <div class="swatch-info"><strong>Steel Silver</strong><span>#9BA4B3 • --muted</span></div>
+          </div>
+          <div class="swatch">
+            <span class="swatch-chip" style="background:var(--accent);"></span>
+            <div class="swatch-info"><strong>Kinetic Lime</strong><span>#B9FF35 • --accent</span></div>
+          </div>
+          <div class="swatch">
+            <span class="swatch-chip" style="background:var(--accent-2);"></span>
+            <div class="swatch-info"><strong>Electric Cyan</strong><span>#5DE8FF • --accent-2</span></div>
+          </div>
+          <div class="swatch">
+            <span class="swatch-chip" style="background:var(--hot);"></span>
+            <div class="swatch-info"><strong>Bright Magenta</strong><span>#FF4DD8 • --hot</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CALL TO ACTION -->
+    <section class="reveal">
+      <div class="container">
+        <div class="manifesto">
+          <div class="section-kicker">Ready to build your brand?</div>
+          <h2>TURN YOUR CHANNEL INTO A RECOGNIZED BRAND.</h2>
+          <p>Don’t just stream. Be remembered. Whether you're ready to deploy a tactical premade bundle like Echo Six tonight or want to discuss your stream theme, color ideas, and custom vision, let's build something unforgettable.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="services.html">Browse Services &amp; Packages</a>
+            <a class="btn btn-secondary" href="faq.html">View Setup &amp; FAQ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html"><span class="brand-mark">TN</span><span>TwistedNox Creative</span></a>
+          <p>Premium streamer packages and creator branding for people building channels worth remembering.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Store</h4>
+          <a href="services.html">Services &amp; Packages</a>
+          <a href="services.html#products">Premade Store</a>
+          <a href="faq.html">Setup &amp; FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About TwistedNox Creative</a>
+          <a href="services.html#tiers">Custom Commissions</a>
+          <a href="mailto:hello@twistednoxcreative.com">Contact &amp; Support</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© <span id="year"></span> TwistedNox Creative. All rights reserved.</span>
+        <span>Don't just stream. Be remembered.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    navLinks?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn?.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

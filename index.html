@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08090d" />
+  <meta name="description" content="TwistedNox Creative creates cinematic, aggressive, premium streamer packages, animated overlays, alerts, logos, intros, emotes, websites, and creator branding built to make streams impossible to forget." />
+  <meta name="keywords" content="Twitch overlays, Streamlabs overlays, OBS overlays, streamer packages, animated alerts, streamer branding, gaming graphics, esports branding, Twitch graphics, YouTube streaming, Kick streaming" />
+  <meta name="author" content="TwistedNox Creative" />
+  <meta property="og:title" content="TwistedNox Creative — Don't Just Stream. Be Remembered." />
+  <meta property="og:description" content="Premium streamer packages and creator branding built around cinematic energy, aggressive esports aesthetics, and instant visual identity." />
+  <meta property="og:type" content="website" />
+  <title>TwistedNox Creative — Don't Just Stream. Be Remembered.</title>
+  <link rel="icon" type="image/png" href="assets/twistednox-emblem-icon.png" />
+  <link rel="apple-touch-icon" href="assets/twistednox-emblem-256.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"TwistedNox Creative",
+    "alternateName":"TwistedNox Creative",
+    "description":"Digital creative studio creating premium streamer packages, animated graphics, creator branding, intros, emotes, websites, and social identity assets.",
+    "slogan":"Don't just stream. Be remembered.",
+    "url":"https://example.com",
+    "sameAs":[],
+    "brand":{
+      "@type":"Brand",
+      "name":"TwistedNox Creative"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #08090d;
+      --bg-2: #0d1018;
+      --panel: rgba(17,20,30,.76);
+      --panel-strong: #11141e;
+      --line: rgba(255,255,255,.095);
+      --line-strong: rgba(255,255,255,.15);
+      --text: #f4f7fb;
+      --muted: #9ba4b3;
+      --muted-2: #717b8a;
+      --accent: #b9ff35;
+      --accent-2: #5de8ff;
+      --hot: #ff4dd8;
+      --danger: #ff4e5b;
+      --shadow: 0 25px 70px rgba(0,0,0,.46);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(93,232,255,.08), transparent 28%),
+        radial-gradient(circle at 88% 8%, rgba(255,77,216,.08), transparent 22%),
+        linear-gradient(180deg, #090a0f 0%, #07080b 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img, video { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+
+    /* Ambient background grid */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      opacity: .35;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.95), transparent 75%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 55vw;
+      height: 55vw;
+      left: -25vw;
+      bottom: -20vw;
+      background: radial-gradient(circle, rgba(185,255,53,.055), transparent 62%);
+      filter: blur(24px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .announcement {
+      min-height: 34px;
+      display: grid;
+      place-items: center;
+      padding: 8px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(185,255,53,.08), rgba(93,232,255,.04), rgba(255,77,216,.06));
+      color: #d9e2ee;
+      font-size: 12px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(8,9,13,.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 950;
+      letter-spacing: .07em;
+      font-size: 17px;
+      transition: transform .25s ease, filter .25s ease;
+      cursor: pointer;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: #08090d;
+      border: 1px solid rgba(93,232,255,.35);
+      box-shadow: 0 0 18px rgba(93,232,255,.25), 0 0 24px rgba(255,77,216,.2);
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, border-color .3s ease;
+      flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 50%;
+    }
+
+    .brand-text {
+      position: relative;
+      transition: color .25s ease, text-shadow .25s ease;
+    }
+
+    /* Dual neon cyan + magenta glow on mouse hover */
+    .brand:hover .brand-mark {
+      transform: scale(1.08) rotate(4deg);
+      border-color: #5de8ff;
+      box-shadow:
+        0 0 12px rgba(93,232,255,.8),
+        0 0 28px rgba(93,232,255,.5),
+        0 0 45px rgba(255,77,216,.45),
+        inset 0 0 12px rgba(93,232,255,.3);
+    }
+
+    .brand:hover .brand-text {
+      color: #ffffff;
+      text-shadow:
+        0 0 6px rgba(93,232,255,.9),
+        0 0 15px rgba(93,232,255,.7),
+        0 0 28px rgba(255,77,216,.65),
+        0 0 45px rgba(255,77,216,.4);
+    }
+
+    /* Neon glow when text is highlighted/selected with mouse */
+    ::selection {
+      background: rgba(93,232,255,.28);
+      color: #ffffff;
+      text-shadow: 0 0 10px #5de8ff, 0 0 22px #ff4dd8;
+    }
+    ::-moz-selection {
+      background: rgba(93,232,255,.28);
+      color: #ffffff;
+      text-shadow: 0 0 10px #5de8ff, 0 0 22px #ff4dd8;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      padding: 11px 15px;
+      border-radius: 10px;
+      color: #c8d0dc;
+      font-size: 14px;
+      font-weight: 750;
+      transition: .2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(255,255,255,.06); }
+
+    .nav-cta {
+      padding: 12px 17px !important;
+      color: #07090b !important;
+      background: var(--accent) !important;
+      box-shadow: 0 10px 35px rgba(185,255,53,.12);
+    }
+    .nav-cta:hover { background: #ceff72 !important; }
+
+    .menu {
+      display: none;
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 52px 0 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: .93fr 1.07fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #cbd4df;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 900;
+      background: rgba(255,255,255,.025);
+    }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+
+    h1 {
+      font-size: clamp(46px, 6vw, 86px);
+      line-height: .92;
+      letter-spacing: -.055em;
+      margin: 21px 0 18px;
+      max-width: 720px;
+    }
+
+    .accent-word {
+      color: var(--accent);
+      text-shadow: 0 0 34px rgba(185,255,53,.12);
+    }
+
+    .hero-copy {
+      max-width: 590px;
+      color: #adb6c3;
+      font-size: 18px;
+      line-height: 1.66;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 13px;
+      border: 1px solid transparent;
+      font-weight: 900;
+      letter-spacing: .01em;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #050709; background: var(--accent); box-shadow: 0 15px 34px rgba(185,255,53,.13); }
+    .btn-primary:hover { box-shadow: 0 18px 45px rgba(185,255,53,.19); }
+    .btn-secondary { color: var(--text); background: rgba(255,255,255,.035); border-color: var(--line-strong); }
+    .btn-secondary:hover { background: rgba(255,255,255,.06); }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 17px;
+      color: var(--muted-2);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .hero-note strong { color: #c8d2dd; }
+
+    /* Animated preview inspired by a real streamer control surface */
+    .preview-wrap { position: relative; }
+    .preview-shell {
+      position: relative;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 26px;
+      padding: 11px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      box-shadow: var(--shadow), inset 0 0 0 1px rgba(255,255,255,.02);
+      overflow: hidden;
+    }
+    .preview-topbar {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      color: #84909f;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .lights { display: flex; gap: 6px; }
+    .lights span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.2); }
+    .screen {
+      aspect-ratio: 16/10;
+      border-radius: 17px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 75% 30%, rgba(93,232,255,.18), transparent 17%),
+        radial-gradient(circle at 24% 60%, rgba(255,77,216,.14), transparent 23%),
+        linear-gradient(135deg, #12131b 0%, #0b0d13 45%, #171922 100%);
+      border: 1px solid rgba(255,255,255,.09);
+      isolation: isolate;
+    }
+    .scanline {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 49%, rgba(255,255,255,.055) 50%, transparent 51%);
+      background-size: 100% 7px;
+      mix-blend-mode: screen;
+      opacity: .16;
+      animation: drift 10s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes drift { to { transform: translateY(28px); } }
+
+    .crosshair {
+      position: absolute;
+      left: 52%; top: 45%;
+      width: 180px; height: 180px;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(185,255,53,.12);
+      border-radius: 50%;
+      box-shadow: 0 0 0 34px rgba(185,255,53,.02), 0 0 0 68px rgba(185,255,53,.012);
+      animation: pulse 2.8s ease-in-out infinite;
+    }
+    .crosshair::before, .crosshair::after { content:""; position:absolute; background: rgba(185,255,53,.42); }
+    .crosshair::before { width: 1px; height: 220px; left: 50%; top: -20px; }
+    .crosshair::after { height: 1px; width: 220px; top: 50%; left: -20px; }
+    @keyframes pulse { 50% { transform: translate(-50%, -50%) scale(1.05); opacity: .8; } }
+
+    .operator {
+      position: absolute;
+      left: 7%; right: 7%; top: 9%; bottom: 12%;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      clip-path: polygon(0 10%, 7% 0, 100% 0, 100% 100%, 7% 100%, 0 90%);
+    }
+    .operator::before {
+      content: "ECHO SIX / LIVE SYSTEM";
+      position: absolute; top: 13px; left: 23px;
+      color: rgba(255,255,255,.52);
+      font-size: 9px; font-weight: 900; letter-spacing: .18em;
+    }
+    .helmet {
+      position: absolute; left: 53%; top: 52%; width: 155px; height: 180px;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 47% 47% 40% 40%;
+      background: linear-gradient(180deg, #303540, #171a22 74%);
+      box-shadow: inset 18px 0 rgba(255,255,255,.025), 0 30px 50px rgba(0,0,0,.35);
+    }
+    .helmet::before {
+      content: ""; position: absolute; left: 50%; top: 47%; width: 110px; height: 32px;
+      transform: translate(-50%, -50%);
+      border: 2px solid rgba(93,232,255,.5);
+      border-left-color: transparent; border-right-color: transparent;
+      box-shadow: 0 0 25px rgba(93,232,255,.12);
+    }
+    .helmet::after {
+      content: "06"; position: absolute; left: 50%; top: 61%; transform: translateX(-50%);
+      color: rgba(185,255,53,.75); font-size: 34px; font-weight: 950; letter-spacing: .08em;
+    }
+
+    .corner { position:absolute; width:60px; height:60px; border-color: rgba(185,255,53,.45); border-style:solid; }
+    .tl { top: 17px; left:17px; border-width:2px 0 0 2px; }
+    .tr { top: 17px; right:17px; border-width:2px 2px 0 0; }
+    .bl { bottom:17px; left:17px; border-width:0 0 2px 2px; }
+    .br { bottom:17px; right:17px; border-width:0 2px 2px 0; }
+
+    .status-strip {
+      position: absolute; bottom: 9%; left: 7%; right: 7%;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+    }
+    .status-strip div {
+      padding: 10px 11px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: rgba(8,9,13,.7);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: #92a0ad;
+    }
+    .status-strip b { display:block; color:#eef3f8; margin-top:4px; font-size:11px; }
+
+    .preview-badge {
+      position: absolute;
+      left: -14px; bottom: 24px;
+      padding: 11px 13px;
+      border-radius: 11px;
+      border: 1px solid rgba(185,255,53,.18);
+      background: rgba(14,16,22,.88);
+      box-shadow: 0 16px 44px rgba(0,0,0,.36);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: #bac5d0;
+    }
+    .preview-badge strong { display:block; color:var(--accent); font-size:12px; margin-top:3px; }
+
+    section { padding: 78px 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .section-kicker { color: var(--accent-2); text-transform: uppercase; letter-spacing: .15em; font-size: 11px; font-weight: 900; }
+    .section-title { margin: 6px 0 0; font-size: clamp(30px, 4vw, 50px); letter-spacing: -.045em; line-height: 1; }
+    .section-copy { max-width: 550px; color: var(--muted); line-height: 1.65; font-size: 14px; }
+
+    .genre-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+    .genre-card {
+      position: relative;
+      min-height: 185px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+      transition: .22s ease;
+    }
+    .genre-card:hover { transform: translateY(-4px); border-color: rgba(185,255,53,.25); }
+    .genre-card::before { content:""; position:absolute; inset:0; background: linear-gradient(135deg, rgba(185,255,53,.08), transparent 50%, rgba(93,232,255,.04)); opacity:.55; }
+    .genre-card::after { content:""; position:absolute; width:150px; height:150px; right:-60px; top:-35px; border-radius:50%; border:1px solid rgba(255,255,255,.09); box-shadow: 0 0 0 22px rgba(255,255,255,.015), 0 0 0 44px rgba(255,255,255,.01); }
+    .genre-number { position:relative; color:#63707f; font-size:10px; letter-spacing:.12em; font-weight:900; }
+    .genre-card h3 { position:relative; margin: 58px 0 5px; font-size: 22px; letter-spacing:-.03em; }
+    .genre-card p { position:relative; margin:0; color:#8995a5; font-size:12px; line-height:1.55; max-width:215px; }
+    .genre-arrow { position:absolute; right:18px; bottom:18px; color:#bcc6d1; font-size:18px; }
+
+    .featured {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1fr;
+      gap: 14px;
+    }
+    .product {
+      min-width:0;
+      overflow:hidden;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.016));
+      transition:.2s ease;
+    }
+    .product:hover { transform:translateY(-4px); border-color:var(--line-strong); box-shadow: 0 20px 50px rgba(0,0,0,.24); }
+    .product-preview {
+      aspect-ratio: 16/10;
+      position:relative;
+      overflow:hidden;
+      background: #0c0e14;
+      border-bottom:1px solid var(--line);
+    }
+    .product-preview.p1 { background: radial-gradient(circle at 68% 35%, rgba(93,232,255,.23), transparent 17%), linear-gradient(145deg,#141720,#0a0b10 66%,#1c1e25); }
+    .product-preview.p2 { background: radial-gradient(circle at 65% 30%, rgba(255,77,216,.19), transparent 18%), linear-gradient(145deg,#1a121a,#090a0f 60%,#131822); }
+    .product-preview.p3 { background: radial-gradient(circle at 40% 45%, rgba(185,255,53,.16), transparent 17%), linear-gradient(145deg,#151710,#0a0b0d 62%,#15191a); }
+    .preview-tag { position:absolute; top:13px; left:13px; padding:7px 9px; border-radius:999px; background:rgba(8,9,13,.75); border:1px solid rgba(255,255,255,.1); color:#c7d0db; font-size:9px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+    .preview-lines { position:absolute; inset:24% 10% 15%; display:grid; gap:10px; }
+    .preview-lines span { height:9px; border-radius:2px; background:linear-gradient(90deg, rgba(255,255,255,.2), rgba(255,255,255,.03)); }
+    .preview-lines span:nth-child(2) { width:70%; }
+    .preview-lines span:nth-child(3) { width:82%; }
+    .preview-lower { position:absolute; left:9%; right:9%; bottom:10%; height:18%; display:flex; gap:8px; }
+    .preview-lower span { flex:1; border:1px solid rgba(255,255,255,.09); background:rgba(7,8,12,.52); border-radius:6px; }
+    .product-body { padding: 17px; }
+    .product-body h3 { margin:0 0 6px; font-size:20px; letter-spacing:-.025em; }
+    .product-body p { margin:0 0 14px; color:#8994a2; font-size:12px; line-height:1.55; min-height:38px; }
+    .product-foot { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .price { font-weight:950; font-size:17px; }
+    .price small { display:block; color:#6d7784; font-size:10px; font-weight:700; margin-top:2px; }
+    .mini-btn { padding:9px 11px; border-radius:9px; border:1px solid var(--line-strong); background:rgba(255,255,255,.035); font-size:11px; font-weight:900; }
+
+    .value {
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+    }
+    .value-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+    .value-item { padding:29px 28px; border-right:1px solid var(--line); }
+    .value-item:last-child { border-right:0; }
+    .value-icon { font-size:20px; }
+    .value-item h3 { margin:12px 0 8px; font-size:17px; }
+    .value-item p { margin:0; color:#8994a2; line-height:1.6; font-size:12px; }
+
+    .process {
+      display:grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 42px;
+      align-items:center;
+    }
+    .process-card { border:1px solid var(--line); border-radius:var(--radius); padding:19px; background:rgba(255,255,255,.025); }
+    .step { display:flex; gap:16px; padding:16px 5px; border-bottom:1px solid var(--line); }
+    .step:last-child { border-bottom:0; }
+    .step-num { flex:0 0 34px; width:34px; height:34px; border-radius:10px; display:grid; place-items:center; background:rgba(185,255,53,.09); border:1px solid rgba(185,255,53,.18); color:var(--accent); font-weight:950; font-size:12px; }
+    .step h4 { margin:0 0 5px; font-size:14px; }
+    .step p { margin:0; color:#8994a2; font-size:12px; line-height:1.55; }
+
+    .manifesto {
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(185,255,53,.16);
+      border-radius: 28px;
+      padding: 48px;
+      background: linear-gradient(135deg, rgba(185,255,53,.065), rgba(93,232,255,.045) 38%, rgba(255,255,255,.018));
+    }
+    .manifesto::after { content:""; position:absolute; width:420px; height:420px; right:-200px; top:-240px; border-radius:50%; border:1px solid rgba(93,232,255,.11); box-shadow:0 0 0 70px rgba(93,232,255,.02), 0 0 0 140px rgba(93,232,255,.01); }
+    .manifesto h2 { position:relative; margin:0 0 10px; max-width:760px; font-size:clamp(30px,4.5vw,58px); letter-spacing:-.05em; line-height:.98; }
+    .manifesto p { position:relative; max-width:690px; margin:0 0 24px; color:#9ba6b2; line-height:1.65; font-size:14px; }
+
+    footer { padding:36px 0 52px; border-top:1px solid var(--line); }
+    .footer-grid { display:grid; grid-template-columns: 1.6fr 1fr 1fr; gap:28px; }
+    .footer-brand { max-width:440px; }
+    .footer-brand p { color:#7f8b99; font-size:12px; line-height:1.65; margin:14px 0 0; }
+    .footer-col h4 { margin:0 0 10px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#aeb8c5; }
+    .footer-col a { display:block; padding:5px 0; color:#7f8b99; font-size:12px; }
+    .footer-col a:hover { color:#eaf0f5; }
+    .copyright { margin-top:38px; color:#58616c; font-size:11px; display:flex; justify-content:space-between; gap:20px; }
+
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity:1; transform:none; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .process { grid-template-columns: 1fr; }
+      .hero { padding-top: 35px; }
+      .genre-grid { grid-template-columns:repeat(2,1fr); }
+      .featured { grid-template-columns:1fr 1fr; }
+      .featured .product:first-child { grid-column:1/-1; }
+      .footer-grid { grid-template-columns:1.6fr 1fr 1fr; }
+      .nav-links { display:none; position:absolute; top:78px; left:20px; right:20px; padding:10px; border:1px solid var(--line-strong); border-radius:14px; background:rgba(10,11,16,.97); flex-direction:column; align-items:stretch; box-shadow:var(--shadow); }
+      .nav-links.open { display:flex; }
+      .menu { display:block; }
+    }
+
+    @media (max-width: 680px) {
+      .container { width:min(var(--max), calc(100% - 28px)); }
+      .nav { height:68px; }
+      .nav-links { top:68px; left:14px; right:14px; }
+      .hero-copy { font-size:16px; }
+      h1 { font-size:52px; }
+      .preview-badge { left:10px; bottom:10px; }
+      .genre-grid, .featured, .value-grid { grid-template-columns:1fr; }
+      .featured .product:first-child { grid-column:auto; }
+      .value-item { border-right:0; border-bottom:1px solid var(--line); }
+      .value-item:last-child { border-bottom:0; }
+      .manifesto { padding:31px 23px; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .footer-brand { grid-column:1/-1; }
+      .copyright { flex-direction:column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Premium streamer packages • OBS + Streamlabs ready • Built to be remembered</div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="TwistedNox Creative home">
+        <span class="brand-mark">
+          <img src="assets/twistednox-emblem-256.png" alt="TwistedNox Emblem" width="42" height="42" />
+        </span>
+        <span class="brand-text">TwistedNox Creative</span>
+      </a>
+
+      <button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services &amp; Products</a>
+        <a href="#setup">Setup &amp; FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="services.html">Shop Packages</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> Creator branding for streams that hit different</span>
+          <h1>DON'T JUST STREAM.<br><span class="accent-word">BE REMEMBERED.</span></h1>
+          <p class="hero-copy">Premium streamer packages built with cinematic motion, aggressive detail, and a visual identity that feels like <strong>you already belong at the top.</strong></p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="services.html">Shop Packages</a>
+            <a class="btn btn-secondary" href="about.html">Meet TwistedNox Creative</a>
+          </div>
+          <div class="hero-note"><span>⚡</span><span><strong>Premade or custom.</strong> Overlays, alerts, intros, logos, emotes, websites, and creator branding in one place.</span></div>
+        </div>
+
+        <div class="preview-wrap reveal" aria-label="Animated showcase preview">
+          <div class="preview-shell">
+            <div class="preview-topbar">
+              <div class="lights"><span></span><span></span><span></span></div>
+              <span>TWISTEDNOX CREATIVE / LIVE VISUAL SYSTEM</span>
+            </div>
+            <div class="screen">
+              <div class="scanline"></div>
+              <div class="crosshair"></div>
+              <div class="operator">
+                <div class="helmet"></div>
+                <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+                <div class="status-strip">
+                  <div>STATUS<b>ONLINE</b></div>
+                  <div>MISSION<b>ACTIVE</b></div>
+                  <div>VIEWERS<b>08,462</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="preview-badge">Featured concept<strong>ECHO SIX</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="genres" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Find your visual language</div>
+            <h2 class="section-title">Shop by style.</h2>
+          </div>
+          <p class="section-copy">Start with the world your channel lives in. Each category is designed to lead into curated packages, pricing tiers, and individual product pages.</p>
+        </div>
+
+        <div class="genre-grid">
+          <a class="genre-card" href="services.html#products">
+            <div class="genre-number">01 / HIGH IMPACT</div>
+            <h3>FPS &amp; Tactical</h3>
+            <p>Operator patches, HUD energy, mission graphics, hard edges, and cinematic motion.</p>
+            <span class="genre-arrow">↗</span>
+          </a>
+          <a class="genre-card" href="services.html#tiers">
+            <div class="genre-number">02 / LOW PRESSURE</div>
+            <h3>Cozy &amp; Chill</h3>
+            <p>Clean creator spaces that feel welcoming without looking generic.</p>
+            <span class="genre-arrow">↗</span>
+          </a>
+          <a class="genre-card" href="services.html#products">
+            <div class="genre-number">03 / DARK MODE</div>
+            <h3>Horror</h3>
+            <p>Distortion, tension, eerie atmosphere, and memorable alert moments.</p>
+            <span class="genre-arrow">↗</span>
+          </a>
+          <a class="genre-card" href="services.html#products">
+            <div class="genre-number">04 / THROWBACK</div>
+            <h3>Retro &amp; Variety</h3>
+            <p>Bold shapes, nostalgic energy, and flexible layouts made for mixed-content creators.</p>
+            <span class="genre-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop" class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Featured / best sellers</div>
+            <h2 class="section-title">Built to look expensive.</h2>
+          </div>
+          <a href="services.html" class="btn btn-secondary">View all packages &amp; tiers</a>
+        </div>
+
+        <div class="featured">
+          <article class="product">
+            <div class="product-preview p1">
+              <span class="preview-tag">Featured / Tactical</span>
+              <div class="preview-lines"><span></span><span></span><span></span></div>
+              <div class="preview-lower"><span></span><span></span><span></span></div>
+            </div>
+            <div class="product-body">
+              <h3>Echo Six — Tactical Collection</h3>
+              <p>Operator-inspired streamer identity with cinematic intro direction, HUD-style overlays, alerts, and a cohesive visual system.</p>
+              <div class="product-foot">
+                <div class="price">$20–$40 <small>Basic Premade Tier</small></div>
+                <a class="mini-btn" href="services.html#echo-six">View package →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-preview p2">
+              <span class="preview-tag">Coming next / Horror</span>
+              <div class="preview-lines"><span></span><span></span><span></span></div>
+              <div class="preview-lower"><span></span><span></span><span></span></div>
+            </div>
+            <div class="product-body">
+              <h3>Afterdark</h3>
+              <p>A dark streaming system focused on tension, atmosphere, and high-contrast alert moments.</p>
+              <div class="product-foot">
+                <div class="price">From $39 <small>Placeholder price</small></div>
+                <a class="mini-btn" href="services.html#products">Join waitlist →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-preview p3">
+              <span class="preview-tag">Coming next / Variety</span>
+              <div class="preview-lines"><span></span><span></span><span></span></div>
+              <div class="preview-lower"><span></span><span></span><span></span></div>
+            </div>
+            <div class="product-body">
+              <h3>Neon Shift</h3>
+              <p>A flexible creator system for variety streams, esports energy, and channels that refuse one visual lane.</p>
+              <div class="product-foot">
+                <div class="price">From $39 <small>Placeholder price</small></div>
+                <a class="mini-btn" href="services.html#products">Join waitlist →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="value reveal" aria-label="Why TwistedNox Creative">
+      <div class="container">
+        <div class="value-grid">
+          <div class="value-item">
+            <div class="value-icon">◈</div>
+            <h3>Made for real streaming</h3>
+            <p>Products clearly state file formats, dimensions, compatibility, and what works with OBS and Streamlabs.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">✦</div>
+            <h3>Designed as a system</h3>
+            <p>Overlays, alerts, logos, intros, emotes, and social assets are meant to feel like one identity—not a pile of unrelated graphics.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">⚙</div>
+            <h3>Simple after checkout</h3>
+            <p>Clear setup instructions, usage guidance, and a support path remove the guesswork between buying a package and going live.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="setup" class="reveal">
+      <div class="container process">
+        <div>
+          <div class="section-kicker">No confusing handoff</div>
+          <h2 class="section-title">Buy it. Import it. Go live.</h2>
+          <p class="section-copy" style="margin-top:16px;">The full storefront makes the post-purchase experience just as clear as the sale. Our support hub combines Setup + FAQ so creators know exactly what happens next.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step"><div class="step-num">01</div><div><h4>Choose a package</h4><p>Compare Basic, Pro, and Ultimate tiers with visual previews and an exact included-items list.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div><h4>Download your files</h4><p>Deliver clearly named files with formats, dimensions, and software compatibility called out before purchase.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div><h4>Import into OBS / Streamlabs</h4><p>Use the setup guide for scene layouts, alerts, sources, browser sources, and audio/visual configuration.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div><h4>Customize and make it yours</h4><p>Understand what can be edited, what usage rights are included, and when a custom commission is the better option.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <div class="container">
+        <div class="manifesto">
+          <div class="section-kicker">Custom work / support / collaborations</div>
+          <h2>YOUR CHANNEL DESERVES MORE THAN “GOOD ENOUGH.”</h2>
+          <p>TwistedNox Creative is built around one idea: your stream should look like a brand people can recognize in a second. Start with a package, build a custom system, or reach out when you need something that does not exist yet.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:hello@twistednoxcreative.com">Start a conversation</a>
+            <a class="btn btn-secondary" href="services.html">Shop Packages</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark">
+              <img src="assets/twistednox-emblem-256.png" alt="TwistedNox Emblem" width="42" height="42" />
+            </span>
+            <span class="brand-text">TwistedNox Creative</span>
+          </a>
+          <p>Premium streamer packages and creator branding for people building channels worth remembering.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Store</h4>
+          <a href="services.html">Services &amp; Packages</a>
+          <a href="services.html#products">Premade Store</a>
+          <a href="index.html#setup">Setup &amp; FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About TwistedNox Creative</a>
+          <a href="services.html#tiers">Custom Commissions</a>
+          <a href="mailto:hello@twistednoxcreative.com">Contact &amp; Support</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© <span id="year"></span> TwistedNox Creative. All rights reserved.</span>
+        <span>Don't just stream. Be remembered.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    navLinks?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn?.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

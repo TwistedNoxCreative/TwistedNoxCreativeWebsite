@@ -1,6 +1,153 @@
-box-shadow:
-  0 0 16px rgba(139, 240, 249, 0.85),
-  0 0 34px rgba(139, 240, 249, 0.55),
-  0 0 58px rgba(243, 149, 221, 0.45),
-  0 0 78px rgba(243, 149, 221, 0.25),
-  inset 0 0 14px rgba(139, 240, 249, 0.35);
+/* ==========================================================================
+   FORM SUCCESS VIDEO & CONFIRMATION PANEL
+   ========================================================================== */
+.form-success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.success-video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--electric-cyan);
+  background: var(--deep-black);
+  box-shadow:
+    0 0 16px rgba(139, 240, 249, 0.85),
+    0 0 34px rgba(139, 240, 249, 0.55),
+    0 0 58px rgba(243, 149, 221, 0.45),
+    0 0 78px rgba(243, 149, 221, 0.25),
+    inset 0 0 14px rgba(139, 240, 249, 0.35);
+  margin-bottom: 24px;
+}
+
+.success-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.success-card {
+  width: 100%;
+  padding: clamp(24px, 4vw, 32px);
+  background: linear-gradient(155deg, rgba(24, 27, 30, 0.98), rgba(8, 9, 11, 0.98));
+  border: 1px solid var(--electric-cyan);
+  border-radius: 18px;
+  box-shadow:
+    0 0 16px rgba(139, 240, 249, 0.85),
+    0 0 34px rgba(139, 240, 249, 0.55),
+    0 0 58px rgba(243, 149, 221, 0.45),
+    0 0 78px rgba(243, 149, 221, 0.25),
+    inset 0 0 14px rgba(139, 240, 249, 0.35);
+  animation: fadeInPanel 0.45s ease forwards;
+}
+
+.success-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--electric-cyan);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.success-badge::before,
+.success-badge::after {
+  content: "";
+  width: 18px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--electric-cyan), var(--bright-magenta));
+  box-shadow: 0 0 8px rgba(139, 240, 249, 0.6);
+}
+
+.success-title {
+  margin: 0 0 14px;
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  font-weight: 900;
+  line-height: 1.2;
+  color: #ffffff;
+  text-shadow: 0 0 2px #fff, 0 0 8px rgba(139, 240, 249, 0.85), 0 0 18px rgba(243, 149, 221, 0.4);
+}
+
+.success-body {
+  color: var(--light-silver);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.success-highlight {
+  display: block;
+  margin: 16px 0;
+  color: var(--electric-cyan);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(139, 240, 249, 0.45);
+}
+
+.success-tagline {
+  margin: 18px 0 6px;
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: transparent;
+  background: linear-gradient(95deg, var(--electric-cyan) 10%, #fff 50%, var(--bright-magenta) 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.success-signature {
+  display: block;
+  color: var(--silver);
+  font-size: 0.84rem;
+  font-weight: 750;
+  letter-spacing: 0.5px;
+  margin-bottom: 22px;
+}
+
+.success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.field-error-text {
+  color: var(--bright-magenta);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-top: 2px;
+  display: block;
+  text-shadow: 0 0 8px rgba(243, 149, 221, 0.45);
+}
+
+.form-status.status-error {
+  background: rgba(113, 37, 96, 0.22);
+  border-color: var(--bright-magenta);
+  color: var(--bright-magenta);
+  box-shadow: 0 0 12px rgba(243, 149, 221, 0.25);
+}
+
+.form-status.status-success {
+  background: rgba(20, 105, 116, 0.25);
+  border-color: var(--electric-cyan);
+  color: var(--electric-cyan);
+  box-shadow: 0 0 14px rgba(139, 240, 249, 0.25);
+}
+
+@keyframes fadeInPanel {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -272,8 +272,162 @@
     .field textarea { min-height: 148px; resize: vertical; }
     .field select option { background: var(--deep-black); color: var(--metallic-white); }
     .form-footnote { margin: -3px 0 0; color: var(--dark-silver); font-size: .75rem; }
-    .form-status { display: none; margin: 0; padding: 11px 13px; border-radius: 9px; color: var(--electric-cyan); background: rgba(20,105,116,.14); border: 1px solid rgba(139,240,249,.3); font-size: .82rem; }
+    .form-status { display: none; margin: 0; padding: 11px 13px; border-radius: 9px; font-size: .82rem; }
     .form-status.visible { display: block; }
+
+    /* ==========================================================================
+       FORM SUCCESS VIDEO & CONFIRMATION PANEL
+       ========================================================================== */
+    .form-success-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .success-video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--electric-cyan);
+      background: var(--deep-black);
+      box-shadow:
+        0 0 16px rgba(139, 240, 249, 0.85),
+        0 0 34px rgba(139, 240, 249, 0.55),
+        0 0 58px rgba(243, 149, 221, 0.45),
+        0 0 78px rgba(243, 149, 221, 0.25),
+        inset 0 0 14px rgba(139, 240, 249, 0.35);
+      margin-bottom: 24px;
+    }
+
+    .success-video {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .success-card {
+      width: 100%;
+      padding: clamp(24px, 4vw, 32px);
+      background: linear-gradient(155deg, rgba(24, 27, 30, 0.98), rgba(8, 9, 11, 0.98));
+      border: 1px solid var(--electric-cyan);
+      border-radius: 18px;
+      box-shadow:
+        0 0 16px rgba(139, 240, 249, 0.85),
+        0 0 34px rgba(139, 240, 249, 0.55),
+        0 0 58px rgba(243, 149, 221, 0.45),
+        0 0 78px rgba(243, 149, 221, 0.25),
+        inset 0 0 14px rgba(139, 240, 249, 0.35);
+      animation: fadeInPanel 0.45s ease forwards;
+    }
+
+    .success-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--electric-cyan);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .success-badge::before,
+    .success-badge::after {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--electric-cyan), var(--bright-magenta));
+      box-shadow: 0 0 8px rgba(139, 240, 249, 0.6);
+    }
+
+    .success-title {
+      margin: 0 0 14px;
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      font-weight: 900;
+      line-height: 1.2;
+      color: #ffffff;
+      text-shadow: 0 0 2px #fff, 0 0 8px rgba(139, 240, 249, 0.85), 0 0 18px rgba(243, 149, 221, 0.4);
+    }
+
+    .success-body {
+      color: var(--light-silver);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      margin: 0 0 16px;
+    }
+
+    .success-highlight {
+      display: block;
+      margin: 16px 0;
+      color: var(--electric-cyan);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 10px rgba(139, 240, 249, 0.45);
+    }
+
+    .success-tagline {
+      margin: 18px 0 6px;
+      font-weight: 900;
+      font-size: 1.05rem;
+      color: transparent;
+      background: linear-gradient(95deg, var(--electric-cyan) 10%, #fff 50%, var(--bright-magenta) 95%);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .success-signature {
+      display: block;
+      color: var(--silver);
+      font-size: 0.84rem;
+      font-weight: 750;
+      letter-spacing: 0.5px;
+      margin-bottom: 22px;
+    }
+
+    .success-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .field-error-text {
+      color: var(--bright-magenta);
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-top: 2px;
+      display: block;
+      text-shadow: 0 0 8px rgba(243, 149, 221, 0.45);
+    }
+
+    .form-status.status-error {
+      background: rgba(113, 37, 96, 0.22);
+      border-color: var(--bright-magenta);
+      color: var(--bright-magenta);
+      box-shadow: 0 0 12px rgba(243, 149, 221, 0.25);
+    }
+
+    .form-status.status-success {
+      background: rgba(20, 105, 116, 0.25);
+      border-color: var(--electric-cyan);
+      color: var(--electric-cyan);
+      box-shadow: 0 0 14px rgba(139, 240, 249, 0.25);
+    }
+
+    @keyframes fadeInPanel {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
     .bottom-strip {
       display: flex;
@@ -410,7 +564,6 @@
       object-fit: contain;
       transition: transform 0.25s ease;
     }
-    /* Signature Dual-Neon Halo Glow on Hover / Focus */
     .qr-interactive-trigger:hover .qr-halo-box,
     .qr-interactive-trigger:focus-visible .qr-halo-box {
       border-color: var(--electric-cyan);
@@ -637,10 +790,11 @@
           </section>
         </div>
 
-        <section class="panel form-panel glow-box" aria-labelledby="form-title">
+        <section class="panel form-panel glow-box" id="form-panel-container" aria-labelledby="form-title">
           <h2 class="section-title box-title" id="form-title">Tell me about your project</h2>
-          <p class="section-copy">Share a few details to kick off the conversation.</p>
-          <form class="contact-form" id="contact-form">
+          <p class="section-copy" id="form-copy">Share a few details to kick off the conversation.</p>
+          
+          <form class="contact-form" id="contact-form" novalidate>
             <div class="field-row">
               <div class="field">
                 <label for="name">Your name *</label>
@@ -667,12 +821,47 @@
               <label for="message">Project details *</label>
               <textarea id="message" name="message" placeholder="Tell me about your channel, the style you want, your ideas, and what you need made..." required></textarea>
             </div>
-            <button class="primary-btn" type="submit">Send Project Inquiry <span aria-hidden="true">↗</span></button>
+            <button class="primary-btn" type="submit" id="submit-btn">Send Project Inquiry <span aria-hidden="true">↗</span></button>
             <p class="form-footnote">Submitting opens your default email app with your message ready to send. This page does not store your form details.</p>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
+
+          <!-- Success State Container (Hidden by default) -->
+          <div class="form-success-container" id="form-success-container" style="display: none;">
+            <!-- Signal Detected Video Container -->
+            <div class="success-video-wrapper" id="success-video-wrapper">
+              <video id="signal-video" class="success-video" playsinline muted preload="auto">
+                <source src="signal_detected.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+              </video>
+            </div>
+
+            <!-- Glowing Success Message Card -->
+            <div class="success-card" id="success-message-card" style="display: none;">
+              <span class="success-badge">Transmission Received</span>
+              <h3 class="success-title">You're Almost There~</h3>
+              <div class="success-body">
+                <p>Thanks for reaching out to TwistedNox Creative! Your message has been received, and I appreciate you taking the time to connect.</p>
+                <p>Whether you're looking for custom stream graphics, a complete branding package, or have a creative idea you'd like to bring to life, I'm looking forward to hearing more about it.</p>
+                <span class="success-highlight">Your vision. Your identity. Your legacy.</span>
+                <p>I'll review your submission and get back to you as soon as possible.</p>
+              </div>
+              <div class="success-tagline">Don't just stream. Be remembered.</div>
+              <span class="success-signature">— TwistedNox Creative</span>
+
+              <div class="success-actions">
+                <a href="https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/" class="primary-btn">
+                  Back to Home <span aria-hidden="true">←</span>
+                </a>
+                <button type="button" class="secondary-btn" id="send-another-btn">
+                  Send Another Inquiry
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
       </section>
+
       <!-- Quick Scan & Save vCard 3.0 Contact QR Section -->
       <section class="panel glow-box bottom-qr-section" aria-labelledby="qr-section-title">
         <span class="qr-badge">Quick Mobile Scan</span>
@@ -712,19 +901,19 @@
         <img 
           src="qr.png" 
           onerror="this.onerror=null; this.src='data:image/png;base64,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';" 
-          alt="Enlarged TwistedNox Creative Contact vCard QR Code" 
-          class="qr-modal-img"
-        />
-      </div>
+              alt="Enlarged TwistedNox Creative Contact vCard QR Code" 
+              class="qr-modal-img"
+            />
+          </div>
 
-      <div class="qr-modal-footer">
-        <button class="primary-btn" type="button" id="modal-download-vcf-btn" style="width: auto; padding: 10px 18px;">
-          <span aria-hidden="true">&#x2193;</span> Download Contact Card (.vcf)
-        </button>
-        <span class="qr-modal-url-pill">https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/</span>
+          <div class="qr-modal-footer">
+            <button class="primary-btn" type="button" id="modal-download-vcf-btn" style="width: auto; padding: 10px 18px;">
+              <span aria-hidden="true">&#x2193;</span> Download Contact Card (.vcf)
+            </button>
+            <span class="qr-modal-url-pill">https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
   <script>
     const VCARD_DATA = [
@@ -755,21 +944,135 @@
       window.setTimeout(() => URL.revokeObjectURL(url), 1500);
     });
 
-    document.getElementById('contact-form').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const form = event.currentTarget;
-      const name = form.elements.name.value.trim();
-      const email = form.elements.email.value.trim();
-      const service = form.elements.service.value;
-      const message = form.elements.message.value.trim();
-      const subject = `TwistedNox Creative inquiry — ${service}`;
-      const body = `Hi TwistedNox Creative,\n\nMy name: ${name}\nMy email: ${email}\nProject type: ${service}\n\nProject details:\n${message}\n\nSent from the TwistedNox Creative contact page.`;
-      const mailto = `mailto:theray12654@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      const status = document.getElementById('form-status');
-      status.textContent = 'Your email app should open with the inquiry filled in. Review it and press Send to deliver your message.';
-      status.classList.add('visible');
-      window.location.href = mailto;
+    // Form elements & Validation Flow
+    const form = document.getElementById('contact-form');
+    const formTitle = document.getElementById('form-title');
+    const formCopy = document.getElementById('form-copy');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const serviceInput = document.getElementById('service');
+    const messageInput = document.getElementById('message');
+    const statusMsg = document.getElementById('form-status');
+    const successContainer = document.getElementById('form-success-container');
+    const videoWrapper = document.getElementById('success-video-wrapper');
+    const signalVideo = document.getElementById('signal-video');
+    const successCard = document.getElementById('success-message-card');
+    const sendAnotherBtn = document.getElementById('send-another-btn');
+
+    // Real-time error removal
+    [nameInput, emailInput, messageInput].forEach(input => {
+      input.addEventListener('input', () => clearFieldError(input));
     });
+    serviceInput.addEventListener('change', () => clearFieldError(serviceInput));
+
+    function clearFieldError(input) {
+      input.style.borderColor = '';
+      input.style.boxShadow = '';
+      const existing = input.parentNode.querySelector('.field-error-text');
+      if (existing) existing.remove();
+      if (!document.querySelector('.field-error-text')) {
+        statusMsg.className = 'form-status';
+        statusMsg.textContent = '';
+      }
+    }
+
+    function setFieldError(input, text) {
+      input.style.borderColor = 'var(--bright-magenta)';
+      input.style.boxShadow = '0 0 10px rgba(243, 149, 221, 0.4)';
+      let existing = input.parentNode.querySelector('.field-error-text');
+      if (!existing) {
+        existing = document.createElement('span');
+        existing.className = 'field-error-text';
+        input.parentNode.appendChild(existing);
+      }
+      existing.textContent = text;
+    }
+
+    function showGlobalStatus(message, type) {
+      statusMsg.textContent = message;
+      statusMsg.className = `form-status visible status-${type}`;
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      // Clear previous error labels
+      document.querySelectorAll('.field-error-text').forEach(el => el.remove());
+
+      const nameVal = nameInput.value.trim();
+      const emailVal = emailInput.value.trim();
+      const serviceVal = serviceInput.value;
+      const messageVal = messageInput.value.trim();
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let hasError = false;
+
+      // 1. Missing information check
+      if (!nameVal || !emailVal || !messageVal) {
+        if (!nameVal) setFieldError(nameInput, 'Name is required.');
+        if (!emailVal) setFieldError(emailInput, 'Email is required.');
+        if (!messageVal) setFieldError(messageInput, 'Project details are required.');
+        showGlobalStatus('Looks like a few details are missing. Please complete all required fields before continuing.', 'error');
+        hasError = true;
+      }
+
+      // 2. Invalid email pattern check
+      if (emailVal && !emailRegex.test(emailVal)) {
+        setFieldError(emailInput, "Please provide a valid email format.");
+        showGlobalStatus("That email address doesn't look right. Please enter a valid email address.", 'error');
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      // 3. Format Mailto Payload
+      const subject = `TwistedNox Creative inquiry — ${serviceVal}`;
+      const body = `Hi TwistedNox Creative,\n\nName / Handle: ${nameVal}\nEmail: ${emailVal}\nProject Type: ${serviceVal}\n\nProject Details:\n${messageVal}\n\n— Sent from TwistedNox Creative`;
+      const mailtoUrl = `mailto:theray12654@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      // 4. Attempt opening mail client
+      try {
+        window.location.href = mailtoUrl;
+        showGlobalStatus('Your email draft is ready! Review it and press Send to submit your message.', 'success');
+      } catch (err) {
+        showGlobalStatus("We couldn't open your email app. Please check your browser settings or contact us directly.", 'error');
+      }
+
+      // 5. Hide form, reset form data, and initiate video + confirmation flow
+      form.style.display = 'none';
+      if (formTitle) formTitle.style.display = 'none';
+      if (formCopy) formCopy.style.display = 'none';
+      form.reset();
+
+      successContainer.style.display = 'flex';
+      videoWrapper.style.display = 'block';
+      successCard.style.display = 'none';
+
+      // Play video in placeholder, then display the thank you card
+      signalVideo.currentTime = 0;
+      signalVideo.play().catch(() => {
+        // Fallback if browser policy blocks autoplay
+        videoWrapper.style.display = 'none';
+        successCard.style.display = 'block';
+      });
+
+      signalVideo.onended = () => {
+        videoWrapper.style.display = 'none';
+        successCard.style.display = 'block';
+      };
+    });
+
+    // Reset view to allow another submission
+    if (sendAnotherBtn) {
+      sendAnotherBtn.addEventListener('click', () => {
+        successContainer.style.display = 'none';
+        form.style.display = 'grid';
+        if (formTitle) formTitle.style.display = 'block';
+        if (formCopy) formCopy.style.display = 'block';
+        statusMsg.className = 'form-status';
+        statusMsg.textContent = '';
+      });
+    }
 
     // QR Code Lightbox / Enlarge Modal
     const qrModal = document.getElementById('qr-modal');
@@ -797,19 +1100,11 @@
       document.body.style.overflow = '';
     }
 
-    if (qrOpenBtn) {
-      qrOpenBtn.addEventListener('click', openQrModal);
-    }
-
-    if (qrCloseBtn) {
-      qrCloseBtn.addEventListener('click', closeQrModal);
-    }
-
+    if (qrOpenBtn) qrOpenBtn.addEventListener('click', openQrModal);
+    if (qrCloseBtn) qrCloseBtn.addEventListener('click', closeQrModal);
     if (qrModal) {
       qrModal.addEventListener('click', (e) => {
-        if (e.target === qrModal) {
-          closeQrModal();
-        }
+        if (e.target === qrModal) closeQrModal();
       });
     }
 

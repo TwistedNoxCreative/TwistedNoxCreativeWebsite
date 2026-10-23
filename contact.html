@@ -315,19 +315,263 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
+
+    /* ==========================================================================
+       BOTTOM QR CODE & SIGNATURE DUAL-NEON HALO GLOW
+       ========================================================================== */
+    .bottom-qr-section {
+      margin: 16px 0 34px;
+      padding: clamp(24px, 4vw, 36px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .bottom-qr-section::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 240, 249, 0.12) 0%, rgba(243, 149, 221, 0.08) 50%, transparent 72%);
+      pointer-events: none;
+      filter: blur(24px);
+    }
+    .qr-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--electric-cyan);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .qr-badge::before, .qr-badge::after {
+      content: "";
+      width: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--electric-cyan), var(--bright-magenta));
+      box-shadow: 0 0 8px rgba(139, 240, 249, 0.6);
+    }
+    .qr-heading {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.7vw, 1.65rem);
+      font-weight: 850;
+      letter-spacing: 0.2px;
+      color: var(--metallic-white);
+      transition: text-shadow 0.25s ease, color 0.25s ease;
+    }
+    .qr-subtext {
+      margin: 8px auto 22px;
+      max-width: 560px;
+      color: var(--light-silver);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .qr-interactive-trigger {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 0;
+      color: inherit;
+      outline: none;
+    }
+    .qr-halo-box {
+      position: relative;
+      padding: 12px;
+      background: linear-gradient(150deg, #101317 0%, #050608 100%);
+      border: 2px solid var(--graphite);
+      border-radius: 20px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 16px rgba(139, 240, 249, 0.12);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-code-img {
+      width: 168px;
+      height: 168px;
+      display: block;
+      border-radius: 12px;
+      background: #ffffff;
+      object-fit: contain;
+      transition: transform 0.25s ease;
+    }
+    /* Signature Dual-Neon Halo Glow on Hover / Focus */
+    .qr-interactive-trigger:hover .qr-halo-box,
+    .qr-interactive-trigger:focus-visible .qr-halo-box {
+      border-color: var(--electric-cyan);
+      box-shadow:
+        0 0 16px rgba(139, 240, 249, 0.85),
+        0 0 36px rgba(139, 240, 249, 0.55),
+        0 0 58px rgba(243, 149, 221, 0.45),
+        0 0 85px rgba(243, 149, 221, 0.25),
+        inset 0 0 14px rgba(139, 240, 249, 0.35);
+      transform: translateY(-4px) scale(1.04);
+    }
+    .qr-interactive-trigger:hover .qr-code-img,
+    .qr-interactive-trigger:focus-visible .qr-code-img {
+      transform: scale(1.01);
+    }
+    .qr-interactive-trigger:hover .qr-heading,
+    .qr-interactive-trigger:focus-visible .qr-heading {
+      color: #ffffff;
+      text-shadow: 0 0 2px #fff, 0 0 8px rgba(139, 240, 249, 0.9), 0 0 18px rgba(139, 240, 249, 0.6), 0 0 28px rgba(243, 149, 221, 0.4);
+    }
+    .qr-action-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      background: rgba(20, 105, 116, 0.3);
+      border: 1px solid rgba(139, 240, 249, 0.35);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 750;
+      color: var(--electric-cyan);
+      letter-spacing: 0.3px;
+      transition: all 0.25s ease;
+    }
+    .qr-interactive-trigger:hover .qr-action-pill,
+    .qr-interactive-trigger:focus-visible .qr-action-pill {
+      background: rgba(20, 105, 116, 0.6);
+      border-color: var(--bright-magenta);
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(139, 240, 249, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       CLICK TO ENLARGE MODAL (LIGHTBOX)
+       ========================================================================== */
+    .qr-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(3, 4, 5, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+    .qr-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .qr-modal-dialog {
+      position: relative;
+      max-width: 440px;
+      width: 100%;
+      background: linear-gradient(155deg, rgba(24, 27, 30, 0.98), rgba(8, 9, 11, 0.98));
+      border: 2px solid var(--electric-cyan);
+      border-radius: 24px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow:
+        0 0 32px rgba(139, 240, 249, 0.45),
+        0 0 65px rgba(243, 149, 221, 0.25),
+        0 28px 60px rgba(0, 0, 0, 0.85);
+      transform: scale(0.92);
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .qr-modal.active .qr-modal-dialog {
+      transform: scale(1);
+    }
+    .qr-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(24, 27, 30, 0.9);
+      border: 1px solid var(--graphite);
+      color: var(--light-silver);
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s ease;
+    }
+    .qr-modal-close:hover {
+      color: #ffffff;
+      border-color: var(--bright-magenta);
+      box-shadow: 0 0 12px rgba(243, 149, 221, 0.6);
+      transform: scale(1.08);
+    }
+    .qr-modal-title {
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+      font-weight: 850;
+      color: var(--metallic-white);
+    }
+    .qr-modal-subtitle {
+      margin: 0 auto 18px;
+      font-size: 0.84rem;
+      color: var(--light-silver);
+      max-width: 320px;
+    }
+    .qr-modal-img-wrap {
+      display: inline-block;
+      padding: 14px;
+      background: #000000;
+      border: 2px solid var(--bright-magenta);
+      border-radius: 18px;
+      box-shadow: 0 0 24px rgba(243, 149, 221, 0.35);
+      margin-bottom: 16px;
+    }
+    .qr-modal-img {
+      width: clamp(230px, 60vw, 290px);
+      height: clamp(230px, 60vw, 290px);
+      display: block;
+      border-radius: 10px;
+      background: #ffffff;
+      object-fit: contain;
+    }
+    .qr-modal-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .qr-modal-url-pill {
+      font-size: 0.76rem;
+      color: var(--steel-cyan);
+      word-break: break-all;
+    }
   </style>
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <a class="brand" href="https://twistednox-creative.netlify.app/" aria-label="TwistedNox Creative home">
+      <a class="brand" href="https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/" aria-label="TwistedNox Creative home">
         <span class="brand-mark" aria-hidden="true"><span>TN</span></span>
         <span class="brand-copy">
           <span class="brand-name">TwistedNox <span>Creative</span></span>
           <span class="brand-tagline">Don't just stream. Be remembered.</span>
         </span>
       </a>
-      <a class="header-link" href="https://twistednox-creative.netlify.app/" target="_blank" rel="noopener noreferrer">Visit Storefront <span aria-hidden="true">↗</span></a>
+      <a class="header-link" href="https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/" target="_blank" rel="noopener noreferrer">Visit Storefront <span aria-hidden="true">↗</span></a>
     </header>
 
     <main>
@@ -363,7 +607,7 @@
                 </span>
                 <span class="contact-action">Call ↗</span>
               </a>
-              <a class="contact-card glow-box" href="https://twistednox-creative.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit TwistedNox Creative storefront">
+              <a class="contact-card glow-box" href="https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/" target="_blank" rel="noopener noreferrer" aria-label="Visit TwistedNox Creative storefront">
                 <span class="contact-info">
                   <span class="contact-icon" aria-hidden="true">⌘</span>
                   <span class="contact-text">
@@ -429,12 +673,57 @@
           </form>
         </section>
       </section>
+      <!-- Quick Scan & Save vCard 3.0 Contact QR Section -->
+      <section class="panel glow-box bottom-qr-section" aria-labelledby="qr-section-title">
+        <span class="qr-badge">Quick Mobile Scan</span>
+        <h2 class="qr-heading" id="qr-section-title">Scan to Save Contact to Phone</h2>
+        <p class="qr-subtext">Point your mobile camera at the QR code below to import Raymond McCoy (TwistedNox Creative) directly into your contacts with direct phone, email, and live website links.</p>
+        
+        <button type="button" class="qr-interactive-trigger" id="qr-open-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="qr-modal" aria-label="TwistedNox Creative Contact vCard QR Code. Click to enlarge.">
+          <div class="qr-halo-box">
+            <img 
+              src="qr.png" 
+              onerror="this.onerror=null; this.src='data:image/png;base64,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';" 
+              alt="TwistedNox Creative Contact vCard QR Code" 
+              class="qr-code-img"
+            />
+          </div>
+          <span class="qr-action-pill">
+            <span aria-hidden="true">&#x2922;</span> Click QR Code to Enlarge
+          </span>
+        </button>
+      </section>
     </main>
 
     <footer class="bottom-strip">
       <span>© <span id="year"></span> <strong>TwistedNox Creative</strong>. Built to be remembered.</span>
       <span class="platforms">Twitch&nbsp; • &nbsp;YouTube&nbsp; • &nbsp;Kick&nbsp; • &nbsp;Discord</span>
     </footer>
+  </div>
+
+  <!-- QR Code Enlarge Modal / Lightbox Dialog -->
+  <div class="qr-modal" id="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title" aria-hidden="true">
+    <div class="qr-modal-dialog">
+      <button type="button" class="qr-modal-close" id="qr-modal-close-btn" aria-label="Close enlarged QR code modal">&times;</button>
+      <h3 class="qr-modal-title" id="qr-modal-title">TwistedNox Creative Contact</h3>
+      <p class="qr-modal-subtitle">Scan with your smartphone camera to import vCard 3.0 contact details directly into your address book.</p>
+      
+      <div class="qr-modal-img-wrap">
+        <img 
+          src="qr.png" 
+          onerror="this.onerror=null; this.src='data:image/png;base64,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';" 
+          alt="Enlarged TwistedNox Creative Contact vCard QR Code" 
+          class="qr-modal-img"
+        />
+      </div>
+
+      <div class="qr-modal-footer">
+        <button class="primary-btn" type="button" id="modal-download-vcf-btn" style="width: auto; padding: 10px 18px;">
+          <span aria-hidden="true">&#x2193;</span> Download Contact Card (.vcf)
+        </button>
+        <span class="qr-modal-url-pill">https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/</span>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -447,7 +736,7 @@
       'TITLE:Founder & Creator Branding Designer',
       'TEL;TYPE=CELL,VOICE:+16299005920',
       'EMAIL;TYPE=INTERNET,PREF:theray12654@gmail.com',
-      'URL:https://twistednox-creative.netlify.app/',
+      'URL:https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/',
       'NOTE:Don\'t just stream. Be remembered. Custom stream packages, logos, overlays, emotes and creator websites.',
       'END:VCARD'
     ].join('\r\n');
@@ -481,6 +770,61 @@
       status.classList.add('visible');
       window.location.href = mailto;
     });
+
+    // QR Code Lightbox / Enlarge Modal
+    const qrModal = document.getElementById('qr-modal');
+    const qrOpenBtn = document.getElementById('qr-open-btn');
+    const qrCloseBtn = document.getElementById('qr-modal-close-btn');
+    const modalDownloadBtn = document.getElementById('modal-download-vcf-btn');
+
+    function openQrModal() {
+      if (!qrModal) return;
+      qrModal.classList.add('active');
+      qrModal.setAttribute('aria-hidden', 'false');
+      if (qrOpenBtn) qrOpenBtn.setAttribute('aria-expanded', 'true');
+      if (qrCloseBtn) qrCloseBtn.focus();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeQrModal() {
+      if (!qrModal) return;
+      qrModal.classList.remove('active');
+      qrModal.setAttribute('aria-hidden', 'true');
+      if (qrOpenBtn) {
+        qrOpenBtn.setAttribute('aria-expanded', 'false');
+        qrOpenBtn.focus();
+      }
+      document.body.style.overflow = '';
+    }
+
+    if (qrOpenBtn) {
+      qrOpenBtn.addEventListener('click', openQrModal);
+    }
+
+    if (qrCloseBtn) {
+      qrCloseBtn.addEventListener('click', closeQrModal);
+    }
+
+    if (qrModal) {
+      qrModal.addEventListener('click', (e) => {
+        if (e.target === qrModal) {
+          closeQrModal();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && qrModal && qrModal.classList.contains('active')) {
+        closeQrModal();
+      }
+    });
+
+    if (modalDownloadBtn) {
+      modalDownloadBtn.addEventListener('click', () => {
+        const downloadBtn = document.getElementById('save-contact-btn');
+        if (downloadBtn) downloadBtn.click();
+      });
+    }
   </script>
 </body>
 </html>

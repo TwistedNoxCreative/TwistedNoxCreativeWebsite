@@ -246,10 +246,11 @@
       text-decoration: none;
       cursor: pointer;
       box-shadow: 0 0 16px rgba(139,240,249,.14);
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     }
     .primary-btn:hover, .secondary-btn:hover { transform: translateY(-2px); border-color: var(--bright-magenta); box-shadow: 0 0 17px rgba(139,240,249,.28), 0 0 23px rgba(243,149,221,.17); }
     .primary-btn { width: 100%; position: relative; z-index: 1; }
+    
     .form-panel { padding: clamp(22px, 4vw, 31px); }
     .form-panel .section-copy { margin-bottom: 24px; }
     .contact-form { display: grid; gap: 16px; }
@@ -272,44 +273,27 @@
     .field textarea { min-height: 148px; resize: vertical; }
     .field select option { background: var(--deep-black); color: var(--metallic-white); }
     .form-footnote { margin: -3px 0 0; color: var(--dark-silver); font-size: .75rem; }
-    .form-status { display: none; margin: 0; padding: 11px 13px; border-radius: 9px; font-size: .82rem; }
+    .form-status { display: none; margin: 0; padding: 11px 13px; border-radius: 9px; color: var(--electric-cyan); background: rgba(20,105,116,.14); border: 1px solid rgba(139,240,249,.3); font-size: .82rem; }
     .form-status.visible { display: block; }
-
-    /* ==========================================================================
-       FORM SUCCESS VIDEO & CONFIRMATION PANEL
-       ========================================================================== */
-    .form-success-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
+    [hidden], .is-hidden { display: none !important; }
+    
+    .submission-flow { display: grid; gap: 16px; }
+    .submission-video-stage {
+      padding: clamp(18px, 3.5vw, 26px);
+      border: 1px solid rgba(139,240,249,.28);
+      border-radius: 15px;
+      background: linear-gradient(145deg, rgba(20,105,116,.12), rgba(13,15,17,.88) 56%, rgba(113,37,96,.12));
+      box-shadow: inset 0 0 22px rgba(139,240,249,.035), 0 0 17px rgba(139,240,249,.07);
+      display: grid;
+      gap: 12px;
     }
-
-    .success-video-wrapper {
-      position: relative;
-      width: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--electric-cyan);
-      background: var(--deep-black);
-      box-shadow:
-        0 0 16px rgba(139, 240, 249, 0.85),
-        0 0 34px rgba(139, 240, 249, 0.55),
-        0 0 58px rgba(243, 149, 221, 0.45),
-        0 0 78px rgba(243, 149, 221, 0.25),
-        inset 0 0 14px rgba(139, 240, 249, 0.35);
-      margin-bottom: 24px;
+    
+    /* Neon Glow for the Thank You Card */
+    @keyframes fadeInPanel {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    .success-video {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    .success-card {
-      width: 100%;
+    .thank-you-card {
       padding: clamp(24px, 4vw, 32px);
       background: linear-gradient(155deg, rgba(24, 27, 30, 0.98), rgba(8, 9, 11, 0.98));
       border: 1px solid var(--electric-cyan);
@@ -321,112 +305,102 @@
         0 0 78px rgba(243, 149, 221, 0.25),
         inset 0 0 14px rgba(139, 240, 249, 0.35);
       animation: fadeInPanel 0.45s ease forwards;
+      display: grid; 
+      justify-items: start; 
+      gap: 13px;
     }
 
-    .success-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
+    .submission-step {
+      margin: 0;
       color: var(--electric-cyan);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 2px;
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: 1.7px;
       text-transform: uppercase;
     }
-
-    .success-badge::before,
-    .success-badge::after {
-      content: "";
-      width: 18px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--electric-cyan), var(--bright-magenta));
-      box-shadow: 0 0 8px rgba(139, 240, 249, 0.6);
-    }
-
-    .success-title {
-      margin: 0 0 14px;
-      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
-      font-weight: 900;
+    .submission-video-title, .thank-you-title {
+      margin: 0;
+      color: var(--metallic-white);
+      font-size: clamp(1.25rem, 3vw, 1.65rem);
       line-height: 1.2;
-      color: #ffffff;
-      text-shadow: 0 0 2px #fff, 0 0 8px rgba(139, 240, 249, 0.85), 0 0 18px rgba(243, 149, 221, 0.4);
+      font-weight: 850;
     }
-
-    .success-body {
-      color: var(--light-silver);
-      font-size: 0.92rem;
-      line-height: 1.65;
-      margin: 0 0 16px;
-    }
-
-    .success-highlight {
+    .submission-video {
       display: block;
-      margin: 16px 0;
+      width: 100%;
+      max-height: 380px;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      background: #030405;
+      border: 1px solid rgba(167,170,173,.2);
+      border-radius: 11px;
+      box-shadow: 0 0 20px rgba(139,240,249,.08);
+    }
+    .submission-copy, .thank-you-copy { margin: 0; color: var(--light-silver); font-size: .9rem; line-height: 1.6; }
+    
+    .thank-you-check {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(139,240,249,.65);
+      border-radius: 50%;
       color: var(--electric-cyan);
-      font-weight: 800;
-      letter-spacing: 0.5px;
+      font-size: 1.55rem;
+      font-weight: 900;
+      text-shadow: 0 0 12px rgba(139,240,249,.65);
+      box-shadow: var(--neon-shadow);
+    }
+    .thank-you-motto {
+      display: block;
+      margin: 6px 0 2px;
+      color: var(--electric-cyan);
+      font-weight: 850;
+      letter-spacing: 0.4px;
       text-shadow: 0 0 10px rgba(139, 240, 249, 0.45);
     }
-
-    .success-tagline {
-      margin: 18px 0 6px;
+    .thank-you-tagline {
+      margin: 10px 0 2px;
       font-weight: 900;
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: transparent;
       background: linear-gradient(95deg, var(--electric-cyan) 10%, #fff 50%, var(--bright-magenta) 95%);
       background-clip: text;
       -webkit-background-clip: text;
     }
-
-    .success-signature {
+    .thank-you-sign {
       display: block;
       color: var(--silver);
       font-size: 0.84rem;
       font-weight: 750;
       letter-spacing: 0.5px;
-      margin-bottom: 22px;
+      margin-bottom: 6px;
     }
-
-    .success-actions {
+    
+    /* Action Buttons Area */
+    .email-launch-btn, .callback-btn {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 22px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 6px;
     }
-
-    .field-error-text {
-      color: var(--bright-magenta);
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-top: 2px;
-      display: block;
-      text-shadow: 0 0 8px rgba(243, 149, 221, 0.45);
-    }
-
-    .form-status.status-error {
-      background: rgba(113, 37, 96, 0.22);
+    .email-launch-btn:focus-visible, .callback-btn:focus-visible { outline-offset: 4px; }
+    
+    /* Callback Button Custom Neon Glow styling */
+    .callback-btn {
+      background: rgba(113, 37, 96, 0.15);
       border-color: var(--bright-magenta);
       color: var(--bright-magenta);
-      box-shadow: 0 0 12px rgba(243, 149, 221, 0.25);
     }
-
-    .form-status.status-success {
-      background: rgba(20, 105, 116, 0.25);
+    .callback-btn:hover, .callback-btn:focus-visible {
+      background: rgba(113, 37, 96, 0.35);
       border-color: var(--electric-cyan);
-      color: var(--electric-cyan);
-      box-shadow: 0 0 14px rgba(139, 240, 249, 0.25);
-    }
-
-    @keyframes fadeInPanel {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      color: #fff;
+      box-shadow: 0 0 18px rgba(243, 149, 221, 0.6), 0 0 35px rgba(139, 240, 249, 0.4);
     }
 
     .bottom-strip {
@@ -469,262 +443,19 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
-
-    /* ==========================================================================
-       BOTTOM QR CODE & SIGNATURE DUAL-NEON HALO GLOW
-       ========================================================================== */
-    .bottom-qr-section {
-      margin: 16px 0 34px;
-      padding: clamp(24px, 4vw, 36px);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .bottom-qr-section::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 340px;
-      height: 340px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(139, 240, 249, 0.12) 0%, rgba(243, 149, 221, 0.08) 50%, transparent 72%);
-      pointer-events: none;
-      filter: blur(24px);
-    }
-    .qr-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      color: var(--electric-cyan);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .qr-badge::before, .qr-badge::after {
-      content: "";
-      width: 20px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--electric-cyan), var(--bright-magenta));
-      box-shadow: 0 0 8px rgba(139, 240, 249, 0.6);
-    }
-    .qr-heading {
-      margin: 0;
-      font-size: clamp(1.25rem, 2.7vw, 1.65rem);
-      font-weight: 850;
-      letter-spacing: 0.2px;
-      color: var(--metallic-white);
-      transition: text-shadow 0.25s ease, color 0.25s ease;
-    }
-    .qr-subtext {
-      margin: 8px auto 22px;
-      max-width: 560px;
-      color: var(--light-silver);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-    .qr-interactive-trigger {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      text-decoration: none;
-      background: none;
-      border: none;
-      padding: 0;
-      color: inherit;
-      outline: none;
-    }
-    .qr-halo-box {
-      position: relative;
-      padding: 12px;
-      background: linear-gradient(150deg, #101317 0%, #050608 100%);
-      border: 2px solid var(--graphite);
-      border-radius: 20px;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 16px rgba(139, 240, 249, 0.12);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .qr-code-img {
-      width: 168px;
-      height: 168px;
-      display: block;
-      border-radius: 12px;
-      background: #ffffff;
-      object-fit: contain;
-      transition: transform 0.25s ease;
-    }
-    .qr-interactive-trigger:hover .qr-halo-box,
-    .qr-interactive-trigger:focus-visible .qr-halo-box {
-      border-color: var(--electric-cyan);
-      box-shadow:
-        0 0 16px rgba(139, 240, 249, 0.85),
-        0 0 36px rgba(139, 240, 249, 0.55),
-        0 0 58px rgba(243, 149, 221, 0.45),
-        0 0 85px rgba(243, 149, 221, 0.25),
-        inset 0 0 14px rgba(139, 240, 249, 0.35);
-      transform: translateY(-4px) scale(1.04);
-    }
-    .qr-interactive-trigger:hover .qr-code-img,
-    .qr-interactive-trigger:focus-visible .qr-code-img {
-      transform: scale(1.01);
-    }
-    .qr-interactive-trigger:hover .qr-heading,
-    .qr-interactive-trigger:focus-visible .qr-heading {
-      color: #ffffff;
-      text-shadow: 0 0 2px #fff, 0 0 8px rgba(139, 240, 249, 0.9), 0 0 18px rgba(139, 240, 249, 0.6), 0 0 28px rgba(243, 149, 221, 0.4);
-    }
-    .qr-action-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 16px;
-      background: rgba(20, 105, 116, 0.3);
-      border: 1px solid rgba(139, 240, 249, 0.35);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 750;
-      color: var(--electric-cyan);
-      letter-spacing: 0.3px;
-      transition: all 0.25s ease;
-    }
-    .qr-interactive-trigger:hover .qr-action-pill,
-    .qr-interactive-trigger:focus-visible .qr-action-pill {
-      background: rgba(20, 105, 116, 0.6);
-      border-color: var(--bright-magenta);
-      color: #ffffff;
-      box-shadow: 0 0 14px rgba(139, 240, 249, 0.4);
-      transform: translateY(-1px);
-    }
-
-    /* ==========================================================================
-       CLICK TO ENLARGE MODAL (LIGHTBOX)
-       ========================================================================== */
-    .qr-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(3, 4, 5, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.28s ease, visibility 0.28s ease;
-    }
-    .qr-modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    .qr-modal-dialog {
-      position: relative;
-      max-width: 440px;
-      width: 100%;
-      background: linear-gradient(155deg, rgba(24, 27, 30, 0.98), rgba(8, 9, 11, 0.98));
-      border: 2px solid var(--electric-cyan);
-      border-radius: 24px;
-      padding: 28px 24px;
-      text-align: center;
-      box-shadow:
-        0 0 32px rgba(139, 240, 249, 0.45),
-        0 0 65px rgba(243, 149, 221, 0.25),
-        0 28px 60px rgba(0, 0, 0, 0.85);
-      transform: scale(0.92);
-      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .qr-modal.active .qr-modal-dialog {
-      transform: scale(1);
-    }
-    .qr-modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(24, 27, 30, 0.9);
-      border: 1px solid var(--graphite);
-      color: var(--light-silver);
-      font-size: 1.3rem;
-      line-height: 1;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      transition: all 0.2s ease;
-    }
-    .qr-modal-close:hover {
-      color: #ffffff;
-      border-color: var(--bright-magenta);
-      box-shadow: 0 0 12px rgba(243, 149, 221, 0.6);
-      transform: scale(1.08);
-    }
-    .qr-modal-title {
-      margin: 0 0 6px;
-      font-size: 1.25rem;
-      font-weight: 850;
-      color: var(--metallic-white);
-    }
-    .qr-modal-subtitle {
-      margin: 0 auto 18px;
-      font-size: 0.84rem;
-      color: var(--light-silver);
-      max-width: 320px;
-    }
-    .qr-modal-img-wrap {
-      display: inline-block;
-      padding: 14px;
-      background: #000000;
-      border: 2px solid var(--bright-magenta);
-      border-radius: 18px;
-      box-shadow: 0 0 24px rgba(243, 149, 221, 0.35);
-      margin-bottom: 16px;
-    }
-    .qr-modal-img {
-      width: clamp(230px, 60vw, 290px);
-      height: clamp(230px, 60vw, 290px);
-      display: block;
-      border-radius: 10px;
-      background: #ffffff;
-      object-fit: contain;
-    }
-    .qr-modal-footer {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-      margin-top: 4px;
-    }
-    .qr-modal-url-pill {
-      font-size: 0.76rem;
-      color: var(--steel-cyan);
-      word-break: break-all;
-    }
   </style>
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <a class="brand" href="https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/" aria-label="TwistedNox Creative home">
+      <a class="brand" href="https://twistednox-creative.netlify.app/" aria-label="TwistedNox Creative home">
         <span class="brand-mark" aria-hidden="true"><span>TN</span></span>
         <span class="brand-copy">
           <span class="brand-name">TwistedNox <span>Creative</span></span>
           <span class="brand-tagline">Don't just stream. Be remembered.</span>
         </span>
       </a>
-      <a class="header-link" href="https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/" target="_blank" rel="noopener noreferrer">Visit Storefront <span aria-hidden="true">↗</span></a>
+      <a class="header-link" href="https://twistednox-creative.netlify.app/" target="_blank" rel="noopener noreferrer">Visit Storefront <span aria-hidden="true">↗</span></a>
     </header>
 
     <main>
@@ -760,7 +491,7 @@
                 </span>
                 <span class="contact-action">Call ↗</span>
               </a>
-              <a class="contact-card glow-box" href="https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/" target="_blank" rel="noopener noreferrer" aria-label="Visit TwistedNox Creative storefront">
+              <a class="contact-card glow-box" href="https://twistednox-creative.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit TwistedNox Creative storefront">
                 <span class="contact-info">
                   <span class="contact-icon" aria-hidden="true">⌘</span>
                   <span class="contact-text">
@@ -790,97 +521,77 @@
           </section>
         </div>
 
-        <section class="panel form-panel glow-box" id="form-panel-container" aria-labelledby="form-title">
-          <h2 class="section-title box-title" id="form-title">Tell me about your project</h2>
-          <p class="section-copy" id="form-copy">Share a few details to kick off the conversation.</p>
-          
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="field-row">
-              <div class="field">
-                <label for="name">Your name *</label>
-                <input id="name" name="name" type="text" placeholder="Name or creator handle" autocomplete="name" required>
+        <section class="panel form-panel glow-box" aria-labelledby="form-title">
+          <div id="contact-form-content">
+            <h2 class="section-title box-title" id="form-title">Tell me about your project</h2>
+            <p class="section-copy">Share a few details to kick off the conversation.</p>
+            <form class="contact-form" id="contact-form">
+              <div class="field-row">
+                <div class="field">
+                  <label for="name">Your name *</label>
+                  <input id="name" name="name" type="text" placeholder="Name or creator handle" autocomplete="name" required>
+                </div>
+                <div class="field">
+                  <label for="email">Your email *</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                </div>
               </div>
               <div class="field">
-                <label for="email">Your email *</label>
-                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                <label for="service">What are you interested in?</label>
+                <select id="service" name="service">
+                  <option value="General inquiry">Choose a project type</option>
+                  <option value="Full streaming package">Full streaming package</option>
+                  <option value="Animated overlays and alerts">Animated overlays &amp; alerts</option>
+                  <option value="Logo, emotes, and brand assets">Logo, emotes &amp; brand assets</option>
+                  <option value="Intro video or motion graphics">Intro video / motion graphics</option>
+                  <option value="Creator website">Creator website</option>
+                  <option value="Custom request">Something custom</option>
+                </select>
               </div>
-            </div>
-            <div class="field">
-              <label for="service">What are you interested in?</label>
-              <select id="service" name="service">
-                <option value="General inquiry">Choose a project type</option>
-                <option value="Full streaming package">Full streaming package</option>
-                <option value="Animated overlays and alerts">Animated overlays &amp; alerts</option>
-                <option value="Logo, emotes, and brand assets">Logo, emotes &amp; brand assets</option>
-                <option value="Intro video or motion graphics">Intro video / motion graphics</option>
-                <option value="Creator website">Creator website</option>
-                <option value="Custom request">Something custom</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="message">Project details *</label>
-              <textarea id="message" name="message" placeholder="Tell me about your channel, the style you want, your ideas, and what you need made..." required></textarea>
-            </div>
-            <button class="primary-btn" type="submit" id="submit-btn">Send Project Inquiry <span aria-hidden="true">↗</span></button>
-            <p class="form-footnote">Submitting opens your default email app with your message ready to send. This page does not store your form details.</p>
-            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-          </form>
+              <div class="field">
+                <label for="message">Project details *</label>
+                <textarea id="message" name="message" placeholder="Tell me about your channel, the style you want, your ideas, and what you need made..." required></textarea>
+              </div>
+              <button class="primary-btn" type="submit">Send Project Inquiry <span aria-hidden="true">↗</span></button>
+              <p class="form-footnote">After you submit, a short video plays before your email app opens. You’ll still need to press Send in your email app.</p>
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
 
-          <!-- Success State Container (Hidden by default) -->
-          <div class="form-success-container" id="form-success-container" style="display: none;">
-            <!-- Signal Detected Video Container -->
-            <div class="success-video-wrapper" id="success-video-wrapper">
-              <video id="signal-video" class="success-video" playsinline muted preload="auto">
-                <source src="signal_detected.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
+          <div class="submission-flow" id="submission-flow" hidden aria-live="polite">
+            <div class="submission-video-stage" id="submission-video-stage">
+              <p class="submission-step">TWISTEDNOX CREATIVE</p>
+              <h2 class="submission-video-title">Preparing your inquiry</h2>
+              <p class="submission-copy">Thanks for reaching out. Enjoy this quick intro while your email draft is prepared.</p>
+              
+              <!-- Removed 'muted' attribute here -->
+              <video class="submission-video" id="submission-video" playsinline autoplay preload="auto" aria-label="TwistedNox Creative submission video">
+                <source src="assets/contact-submit.mp4" type="video/mp4">
+                Your browser does not support embedded video.
               </video>
+              <p class="form-footnote">Please keep this page open until the next step appears.</p>
             </div>
 
-            <!-- Glowing Success Message Card -->
-            <div class="success-card" id="success-message-card" style="display: none;">
-              <span class="success-badge">Transmission Received</span>
-              <h3 class="success-title">You're Almost There~</h3>
-              <div class="success-body">
-                <p>Thanks for reaching out to TwistedNox Creative! Your message has been received, and I appreciate you taking the time to connect.</p>
-                <p>Whether you're looking for custom stream graphics, a complete branding package, or have a creative idea you'd like to bring to life, I'm looking forward to hearing more about it.</p>
-                <span class="success-highlight">Your vision. Your identity. Your legacy.</span>
-                <p>I'll review your submission and get back to you as soon as possible.</p>
-              </div>
-              <div class="success-tagline">Don't just stream. Be remembered.</div>
-              <span class="success-signature">— TwistedNox Creative</span>
-
-              <div class="success-actions">
-                <a href="https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/" class="primary-btn">
-                  Back to Home <span aria-hidden="true">←</span>
-                </a>
-                <button type="button" class="secondary-btn" id="send-another-btn">
-                  Send Another Inquiry
-                </button>
-              </div>
+            <!-- Enhanced Glowing Thank You Card -->
+            <div class="thank-you-card" id="thank-you-card" hidden>
+              <div class="thank-you-check" aria-hidden="true">✓</div>
+              <p class="submission-step">TRANSMISSION PREPARED</p>
+              <h2 class="thank-you-title">You're Almost There~</h2>
+              <p class="thank-you-copy">Thanks for reaching out to TwistedNox Creative! I appreciate you taking the time to connect.</p>
+              <p class="thank-you-copy">Whether you're looking for custom stream graphics, a complete branding package, or have a creative idea you'd like to bring to life, I'm looking forward to hearing more about it.</p>
+              <span class="thank-you-motto">Your vision. Your identity. Your legacy.</span>
+              <p class="thank-you-copy">I'll review your submission and get back to you as soon as possible.</p>
+              <div class="thank-you-tagline">Don't just stream. Be remembered.</div>
+              <span class="thank-you-sign">— TwistedNox Creative</span>
+              <p class="thank-you-copy" id="email-launch-note">Your default email app will open shortly. Review the message and press <strong>Send</strong> to submit.</p>
+              
+              <a class="primary-btn email-launch-btn is-hidden" id="open-email-button" href="#" target="_blank">Open Email App <span aria-hidden="true">↗</span></a>
+              <p class="form-footnote" id="email-fallback-note">If your email app does not open automatically, click the button above.</p>
+              
+              <a class="secondary-btn callback-btn is-hidden" id="return-home-btn" href="https://twistednox-creative.netlify.app/">Return to Homepage <span aria-hidden="true">↺</span></a>
             </div>
           </div>
         </section>
-      </section>
-
-      <!-- Quick Scan & Save vCard 3.0 Contact QR Section -->
-      <section class="panel glow-box bottom-qr-section" aria-labelledby="qr-section-title">
-        <span class="qr-badge">Quick Mobile Scan</span>
-        <h2 class="qr-heading" id="qr-section-title">Scan to Save Contact to Phone</h2>
-        <p class="qr-subtext">Point your mobile camera at the QR code below to import Raymond McCoy (TwistedNox Creative) directly into your contacts with direct phone, email, and live website links.</p>
-        
-        <button type="button" class="qr-interactive-trigger" id="qr-open-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="qr-modal" aria-label="TwistedNox Creative Contact vCard QR Code. Click to enlarge.">
-          <div class="qr-halo-box">
-            <img 
-              src="qr.png" 
-              onerror="this.onerror=null; this.src='data:image/png;base64,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';" 
-              alt="TwistedNox Creative Contact vCard QR Code" 
-              class="qr-code-img"
-            />
-          </div>
-          <span class="qr-action-pill">
-            <span aria-hidden="true">&#x2922;</span> Click QR Code to Enlarge
-          </span>
-        </button>
       </section>
     </main>
 
@@ -889,31 +600,6 @@
       <span class="platforms">Twitch&nbsp; • &nbsp;YouTube&nbsp; • &nbsp;Kick&nbsp; • &nbsp;Discord</span>
     </footer>
   </div>
-
-  <!-- QR Code Enlarge Modal / Lightbox Dialog -->
-  <div class="qr-modal" id="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title" aria-hidden="true">
-    <div class="qr-modal-dialog">
-      <button type="button" class="qr-modal-close" id="qr-modal-close-btn" aria-label="Close enlarged QR code modal">&times;</button>
-      <h3 class="qr-modal-title" id="qr-modal-title">TwistedNox Creative Contact</h3>
-      <p class="qr-modal-subtitle">Scan with your smartphone camera to import vCard 3.0 contact details directly into your address book.</p>
-      
-      <div class="qr-modal-img-wrap">
-        <img 
-          src="qr.png" 
-          onerror="this.onerror=null; this.src='data:image/png;base64,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';" 
-              alt="Enlarged TwistedNox Creative Contact vCard QR Code" 
-              class="qr-modal-img"
-            />
-          </div>
-
-          <div class="qr-modal-footer">
-            <button class="primary-btn" type="button" id="modal-download-vcf-btn" style="width: auto; padding: 10px 18px;">
-              <span aria-hidden="true">&#x2193;</span> Download Contact Card (.vcf)
-            </button>
-            <span class="qr-modal-url-pill">https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/</span>
-          </div>
-        </div>
-      </div>
 
   <script>
     const VCARD_DATA = [
@@ -925,7 +611,7 @@
       'TITLE:Founder & Creator Branding Designer',
       'TEL;TYPE=CELL,VOICE:+16299005920',
       'EMAIL;TYPE=INTERNET,PREF:theray12654@gmail.com',
-      'URL:https://twistednoxcreative.github.io/TwistedNoxCreativeWebsite/',
+      'URL:https://twistednox-creative.netlify.app/',
       'NOTE:Don\'t just stream. Be remembered. Custom stream packages, logos, overlays, emotes and creator websites.',
       'END:VCARD'
     ].join('\r\n');
@@ -944,182 +630,87 @@
       window.setTimeout(() => URL.revokeObjectURL(url), 1500);
     });
 
-    // Form elements & Validation Flow
-    const form = document.getElementById('contact-form');
-    const formTitle = document.getElementById('form-title');
-    const formCopy = document.getElementById('form-copy');
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const serviceInput = document.getElementById('service');
-    const messageInput = document.getElementById('message');
-    const statusMsg = document.getElementById('form-status');
-    const successContainer = document.getElementById('form-success-container');
-    const videoWrapper = document.getElementById('success-video-wrapper');
-    const signalVideo = document.getElementById('signal-video');
-    const successCard = document.getElementById('success-message-card');
-    const sendAnotherBtn = document.getElementById('send-another-btn');
+    const contactForm = document.getElementById('contact-form');
+    const contactFormContent = document.getElementById('contact-form-content');
+    const submissionFlow = document.getElementById('submission-flow');
+    const submissionVideoStage = document.getElementById('submission-video-stage');
+    const submissionVideo = document.getElementById('submission-video');
+    const thankYouCard = document.getElementById('thank-you-card');
+    const openEmailButton = document.getElementById('open-email-button');
+    const returnHomeButton = document.getElementById('return-home-btn');
+    const emailLaunchNote = document.getElementById('email-launch-note');
+    const emailFallbackNote = document.getElementById('email-fallback-note');
+    
+    // Configured Timings
+    const VIDEO_PLAY_DURATION_MS = 4000;  
+    const THANK_YOU_DISPLAY_MS = 10000;   
+    let preparedMailto = '';
 
-    // Real-time error removal
-    [nameInput, emailInput, messageInput].forEach(input => {
-      input.addEventListener('input', () => clearFieldError(input));
-    });
-    serviceInput.addEventListener('change', () => clearFieldError(serviceInput));
+    const wait = (milliseconds) => new Promise(resolve => window.setTimeout(resolve, milliseconds));
 
-    function clearFieldError(input) {
-      input.style.borderColor = '';
-      input.style.boxShadow = '';
-      const existing = input.parentNode.querySelector('.field-error-text');
-      if (existing) existing.remove();
-      if (!document.querySelector('.field-error-text')) {
-        statusMsg.className = 'form-status';
-        statusMsg.textContent = '';
-      }
+    function playSubmissionVideo(video) {
+      return new Promise(resolve => {
+        window.setTimeout(() => {
+          video.pause();
+          resolve(true);
+        }, VIDEO_PLAY_DURATION_MS);
+        
+        try {
+          video.currentTime = 0;
+          video.load();
+          video.play().catch(() => {});
+        } catch (error) {}
+      });
     }
 
-    function setFieldError(input, text) {
-      input.style.borderColor = 'var(--bright-magenta)';
-      input.style.boxShadow = '0 0 10px rgba(243, 149, 221, 0.4)';
-      let existing = input.parentNode.querySelector('.field-error-text');
-      if (!existing) {
-        existing = document.createElement('span');
-        existing.className = 'field-error-text';
-        input.parentNode.appendChild(existing);
-      }
-      existing.textContent = text;
-    }
-
-    function showGlobalStatus(message, type) {
-      statusMsg.textContent = message;
-      statusMsg.className = `form-status visible status-${type}`;
-    }
-
-    form.addEventListener('submit', (event) => {
+    contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      // Clear previous error labels
-      document.querySelectorAll('.field-error-text').forEach(el => el.remove());
-
-      const nameVal = nameInput.value.trim();
-      const emailVal = emailInput.value.trim();
-      const serviceVal = serviceInput.value;
-      const messageVal = messageInput.value.trim();
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      let hasError = false;
-
-      // 1. Missing information check
-      if (!nameVal || !emailVal || !messageVal) {
-        if (!nameVal) setFieldError(nameInput, 'Name is required.');
-        if (!emailVal) setFieldError(emailInput, 'Email is required.');
-        if (!messageVal) setFieldError(messageInput, 'Project details are required.');
-        showGlobalStatus('Looks like a few details are missing. Please complete all required fields before continuing.', 'error');
-        hasError = true;
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
       }
 
-      // 2. Invalid email pattern check
-      if (emailVal && !emailRegex.test(emailVal)) {
-        setFieldError(emailInput, "Please provide a valid email format.");
-        showGlobalStatus("That email address doesn't look right. Please enter a valid email address.", 'error');
-        hasError = true;
-      }
+      if (contactForm.dataset.submitting === 'true') return;
+      contactForm.dataset.submitting = 'true';
 
-      if (hasError) return;
+      const name = contactForm.elements.name.value.trim();
+      const email = contactForm.elements.email.value.trim();
+      const service = contactForm.elements.service.value;
+      const message = contactForm.elements.message.value.trim();
+      const subject = `TwistedNox Creative inquiry — ${service}`;
+      const body = `Hi TwistedNox Creative,\n\nMy name: ${name}\nMy email: ${email}\nProject type: ${service}\n\nProject details:\n${message}\n\nSent from the TwistedNox Creative contact page.`;
+      preparedMailto = `mailto:theray12654@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      openEmailButton.href = preparedMailto;
 
-      // 3. Format Mailto Payload
-      const subject = `TwistedNox Creative inquiry — ${serviceVal}`;
-      const body = `Hi TwistedNox Creative,\n\nName / Handle: ${nameVal}\nEmail: ${emailVal}\nProject Type: ${serviceVal}\n\nProject Details:\n${messageVal}\n\n— Sent from TwistedNox Creative`;
-      const mailtoUrl = `mailto:theray12654@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      contactFormContent.hidden = true;
+      submissionFlow.hidden = false;
+      submissionVideoStage.hidden = false;
+      thankYouCard.hidden = true;
+      openEmailButton.classList.add('is-hidden');
+      returnHomeButton.classList.add('is-hidden');
+      emailLaunchNote.textContent = 'Your default email app will open shortly. Review the message and press Send to submit.';
 
-      // 4. Attempt opening mail client
-      try {
-        window.location.href = mailtoUrl;
-        showGlobalStatus('Your email draft is ready! Review it and press Send to submit your message.', 'success');
-      } catch (err) {
-        showGlobalStatus("We couldn't open your email app. Please check your browser settings or contact us directly.", 'error');
-      }
+      await playSubmissionVideo(submissionVideo);
+      submissionVideoStage.hidden = true;
+      thankYouCard.hidden = false;
 
-      // 5. Hide form, reset form data, and initiate video + confirmation flow
-      form.style.display = 'none';
-      if (formTitle) formTitle.style.display = 'none';
-      if (formCopy) formCopy.style.display = 'none';
-      form.reset();
+      await wait(THANK_YOU_DISPLAY_MS);
+      openEmailButton.classList.remove('is-hidden');
+      returnHomeButton.classList.remove('is-hidden');
+      emailFallbackNote.textContent = 'If your email app did not open automatically, click the button above.';
 
-      successContainer.style.display = 'flex';
-      videoWrapper.style.display = 'block';
-      successCard.style.display = 'none';
-
-      // Play video in placeholder, then display the thank you card
-      signalVideo.currentTime = 0;
-      signalVideo.play().catch(() => {
-        // Fallback if browser policy blocks autoplay
-        videoWrapper.style.display = 'none';
-        successCard.style.display = 'block';
-      });
-
-      signalVideo.onended = () => {
-        videoWrapper.style.display = 'none';
-        successCard.style.display = 'block';
-      };
+      window.open(preparedMailto, '_blank');
     });
 
-    // Reset view to allow another submission
-    if (sendAnotherBtn) {
-      sendAnotherBtn.addEventListener('click', () => {
-        successContainer.style.display = 'none';
-        form.style.display = 'grid';
-        if (formTitle) formTitle.style.display = 'block';
-        if (formCopy) formCopy.style.display = 'block';
-        statusMsg.className = 'form-status';
-        statusMsg.textContent = '';
-      });
-    }
-
-    // QR Code Lightbox / Enlarge Modal
-    const qrModal = document.getElementById('qr-modal');
-    const qrOpenBtn = document.getElementById('qr-open-btn');
-    const qrCloseBtn = document.getElementById('qr-modal-close-btn');
-    const modalDownloadBtn = document.getElementById('modal-download-vcf-btn');
-
-    function openQrModal() {
-      if (!qrModal) return;
-      qrModal.classList.add('active');
-      qrModal.setAttribute('aria-hidden', 'false');
-      if (qrOpenBtn) qrOpenBtn.setAttribute('aria-expanded', 'true');
-      if (qrCloseBtn) qrCloseBtn.focus();
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeQrModal() {
-      if (!qrModal) return;
-      qrModal.classList.remove('active');
-      qrModal.setAttribute('aria-hidden', 'true');
-      if (qrOpenBtn) {
-        qrOpenBtn.setAttribute('aria-expanded', 'false');
-        qrOpenBtn.focus();
-      }
-      document.body.style.overflow = '';
-    }
-
-    if (qrOpenBtn) qrOpenBtn.addEventListener('click', openQrModal);
-    if (qrCloseBtn) qrCloseBtn.addEventListener('click', closeQrModal);
-    if (qrModal) {
-      qrModal.addEventListener('click', (e) => {
-        if (e.target === qrModal) closeQrModal();
-      });
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && qrModal && qrModal.classList.contains('active')) {
-        closeQrModal();
-      }
+    openEmailButton.addEventListener('click', (event) => {
+      if (!preparedMailto) event.preventDefault();
     });
 
-    if (modalDownloadBtn) {
-      modalDownloadBtn.addEventListener('click', () => {
-        const downloadBtn = document.getElementById('save-contact-btn');
-        if (downloadBtn) downloadBtn.click();
-      });
-    }
+    returnHomeButton.addEventListener('click', () => {
+      contactForm.reset();
+      contactForm.dataset.submitting = 'false';
+    });
   </script>
 </body>
 </html>
